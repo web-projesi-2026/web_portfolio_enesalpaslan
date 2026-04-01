@@ -3,354 +3,2405 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VELOX — Hakkımızda</title>
+<title>VELOX — Motorsport Araç Kiralama</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="VELOX - Türkiye'nin #1 premium araç kiralama platformu. 250+ araç, 48 şehir.">
+<meta name="keywords" content="araç kiralama, rent a car, VELOX, premium kiralama">
+<meta name="author" content="Enes Alsaplan">
+<meta property="og:title" content="VELOX — Motorsport Araç Kiralama">
+<meta property="og:description" content="Türkiye'nin en premium araç kiralama deneyimi">
+
+<!-- Fonts & CSS -->
 <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
+/* ═══════════════════════════════════════════
+   VELOX v3 — MOTORSPORT EDITION
+   Palette: Carbon black · Race red · Titanium white
+   Vibe: F1 pit wall meets rental agency
+═══════════════════════════════════════════ */
+
 :root {
-  --bg:#0a0a0a; --bg2:#111; --bg3:#181818;
-  --surface:#1a1a1a; --surface2:#222; --surface3:#2a2a2a;
-  --red:#e8001f; --red2:#ff1a35; --red-dim:rgba(232,0,31,.1); --red-glow:rgba(232,0,31,.25);
-  --text:#f0f0f0; --text-dim:#888; --text-muted:#555;
-  --border:rgba(255,255,255,.06); --border2:rgba(255,255,255,.12);
-  --carbon:repeating-linear-gradient(45deg,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 1px,transparent 1px,transparent 8px),repeating-linear-gradient(-45deg,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 1px,transparent 1px,transparent 8px);
-  --clip:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
-  --tr:all .3s cubic-bezier(.25,.8,.25,1);
+  /* DARK MODE (default) */
+  --bg:       #0a0a0a;
+  --bg2:      #111111;
+  --bg3:      #181818;
+  --surface:  #1a1a1a;
+  --surface2: #222222;
+  --surface3: #2a2a2a;
+  --red:      #e8001f;
+  --red2:     #ff1a35;
+  --red-dim:  rgba(232,0,31,0.12);
+  --red-glow: rgba(232,0,31,0.25);
+  --white:    #f5f5f5;
+  --text:     #f0f0f0;
+  --text-dim: #888888;
+  --text-muted: #555555;
+  --border:   rgba(255,255,255,0.06);
+  --border2:  rgba(255,255,255,0.12);
+  --carbon: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.015) 0px,
+    rgba(255,255,255,0.015) 1px,
+    transparent 1px,
+    transparent 8px
+  ),
+  repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,0.015) 0px,
+    rgba(255,255,255,0.015) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --stripe: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 10px,
+    rgba(232,0,31,0.04) 10px,
+    rgba(232,0,31,0.04) 20px
+  );
+  --shadow-red: 0 0 60px rgba(232,0,31,0.2);
+  --transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
+  --clip-sharp: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  --clip-left: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
 }
-[data-theme="light"]{
-  --bg:#f0f0ee; --bg2:#e8e8e6; --bg3:#e0e0de;
-  --surface:#fff; --surface2:#f4f4f2; --surface3:#ebebea;
-  --red:#cc0018; --red2:#e8001f; --red-dim:rgba(204,0,24,.07); --red-glow:rgba(204,0,24,.15);
-  --text:#0d0d0d; --text-dim:#555; --text-muted:#999;
-  --border:rgba(0,0,0,.08); --border2:rgba(0,0,0,.16);
+
+[data-theme="light"] {
+  --bg:       #f0f0ee;
+  --bg2:      #e8e8e6;
+  --bg3:      #e0e0de;
+  --surface:  #ffffff;
+  --surface2: #f4f4f2;
+  --surface3: #ebebea;
+  --red:      #cc0018;
+  --red2:     #e8001f;
+  --red-dim:  rgba(204,0,24,0.08);
+  --red-glow: rgba(204,0,24,0.15);
+  --white:    #111111;
+  --text:     #0d0d0d;
+  --text-dim: #555555;
+  --text-muted: #999999;
+  --border:   rgba(0,0,0,0.08);
+  --border2:  rgba(0,0,0,0.16);
+  --carbon: repeating-linear-gradient(
+    45deg,
+    rgba(0,0,0,0.025) 0px,
+    rgba(0,0,0,0.025) 1px,
+    transparent 1px,
+    transparent 8px
+  ),
+  repeating-linear-gradient(
+    -45deg,
+    rgba(0,0,0,0.025) 0px,
+    rgba(0,0,0,0.025) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --stripe: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 10px,
+    rgba(204,0,24,0.03) 10px,
+    rgba(204,0,24,0.03) 20px
+  );
+  --shadow-red: 0 0 40px rgba(204,0,24,0.12);
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);background-image:var(--carbon);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none;transition:background .5s,color .5s;}
-::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg2);} ::-webkit-scrollbar-thumb{background:var(--red);}
 
-/* CURSOR */
-.cursor{width:8px;height:8px;background:var(--red);border-radius:50%;position:fixed;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 12px var(--red-glow);}
-.cursor-cross{position:fixed;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
-.cursor-cross::before,.cursor-cross::after{content:'';position:absolute;background:rgba(232,0,31,.5);}
-.cursor-cross::before{width:20px;height:1px;top:0;left:-10px;}
-.cursor-cross::after{width:1px;height:20px;top:-10px;left:0;}
-.cursor.hov{width:4px;height:4px;background:#f0f0f0;}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+  cursor: auto;
+  transition: background 0.5s, color 0.5s;
+}
+[data-theme="light"] body {
+  background-image: var(--carbon);
+}
+[data-theme="dark"] body {
+  background-image: var(--carbon);
+}
 
-/* SCROLL PROGRESS */
-#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:9999;background:var(--border);}
-#prog-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--red2));width:0;transition:width .08s linear;box-shadow:0 0 12px var(--red-glow);}
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--red); }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 64px;display:flex;align-items:center;justify-content:space-between;transition:var(--tr);}
-nav.sc{padding:14px 64px;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-[data-theme="light"] nav.sc{background:rgba(240,240,238,.95);}
-.nav-logo{font-family:'Racing Sans One',cursive;font-size:24px;letter-spacing:4px;text-decoration:none;color:var(--text);position:relative;}
-.nav-logo em{color:var(--red);font-style:normal;}
-.nav-logo::after{content:'MOTORSPORT';position:absolute;bottom:-8px;left:0;font-family:'Barlow Condensed',sans-serif;font-size:8px;letter-spacing:4px;color:var(--red);font-weight:700;}
-.nav-links{display:flex;gap:30px;list-style:none;}
-.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .25s;position:relative;}
-.nav-links a::before{content:'';position:absolute;bottom:-3px;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
-.nav-links a:hover{color:var(--text);}
-.nav-links a:hover::before{transform:scaleX(1);transform-origin:left;}
-.nav-links a.active{color:var(--red);}
-.nav-links a.active::before{transform:scaleX(1);}
-.nav-right{display:flex;align-items:center;gap:14px;}
-.theme-btn{width:48px;height:24px;cursor:none;background:var(--surface2);border:1px solid var(--border2);position:relative;overflow:hidden;}
-.theme-ind{position:absolute;inset:3px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;color:#fff;}
-.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--red);color:#fff;border:none;padding:10px 24px;cursor:none;transition:var(--tr);clip-path:var(--clip);}
-.nav-cta:hover{background:#fff;color:var(--red);}
+/* ── SCROLL PROGRESS ── */
+#prog {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 9999;
+  background: var(--border);
+}
+#prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red), var(--red2), #ff6b6b);
+  width: 0; transition: width 0.08s linear;
+  box-shadow: 0 0 12px var(--red-glow);
+}
 
-/* CHECKER */
-.checker{height:12px;background:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 24px,var(--bg) 24px,var(--bg) 48px);}
-.checker.alt{background:repeating-linear-gradient(90deg,var(--bg) 0,var(--bg) 24px,var(--red) 24px,var(--red) 48px);}
+/* ── CURSOR ── */
+.cursor {
+  width: 8px; height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 99999;
+  transform: translate(-50%,-50%);
+  transition: width .15s, height .15s, border-radius .15s;
+  box-shadow: 0 0 12px var(--red-glow);
+}
+.cursor-cross {
+  position: fixed; pointer-events: none; z-index: 99998;
+  transform: translate(-50%,-50%);
+  transition: left .08s, top .08s;
+}
+.cursor-cross::before, .cursor-cross::after {
+  content: ''; position: absolute;
+  background: rgba(232,0,31,0.5);
+}
+.cursor-cross::before { width: 20px; height: 1px; top: 0; left: -10px; }
+.cursor-cross::after  { width: 1px; height: 20px; top: -10px; left: 0; }
+.cursor.hover { width: 4px; height: 4px; background: var(--white); }
+.cursor-cross.hover::before { width: 36px; left: -18px; }
+.cursor-cross.hover::after  { height: 36px; top: -18px; }
 
-/* HERO */
-.page-hero{min-height:52vh;display:flex;align-items:flex-end;padding:160px 64px 64px;position:relative;overflow:hidden;background:var(--bg2);}
-.page-hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 10px,rgba(232,0,31,.03) 10px,rgba(232,0,31,.03) 20px);}
-.page-hero-slash{position:absolute;top:0;right:0;width:45%;height:100%;background:linear-gradient(170deg,transparent 30%,var(--red-dim) 100%);clip-path:polygon(20% 0,100% 0,100% 100%,0% 100%);}
-.page-hero-slash::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,transparent,var(--red) 40%,var(--red) 60%,transparent);}
-.page-eyebrow{display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
-.page-eyebrow::before{content:'';width:20px;height:2px;background:var(--red);}
-.page-title{font-family:'Racing Sans One',cursive;font-size:clamp(52px,8vw,110px);line-height:.9;letter-spacing:1px;position:relative;z-index:2;}
-.page-title span{display:block;}
-.page-title .t-out{-webkit-text-stroke:2px var(--red);color:transparent;}
+/* ── LOADER ── */
+.loader {
+  position: fixed; inset: 0; background: #000;
+  z-index: 99990; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 0;
+  transition: opacity .8s, visibility .8s;
+  overflow: hidden;
+}
+.loader.out { opacity: 0; visibility: hidden; }
+.loader-flag {
+  display: flex; gap: 0; margin-bottom: 48px;
+  animation: flagIn 0.6s ease both;
+}
+@keyframes flagIn { from { opacity:0; transform: scaleX(0); } to { opacity:1; transform: scaleX(1); } }
+.flag-blk { width: 24px; height: 24px; background: #fff; }
+.flag-blk:nth-child(odd) { background: #000; border: 1px solid #333; }
+.flag-blk:nth-child(even) { background: #fff; }
+/* 8×2 checkerboard */
+.loader-brand {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 80px; letter-spacing: 8px;
+  color: #fff; margin-bottom: 8px;
+  animation: brandIn 0.5s 0.3s ease both;
+}
+@keyframes brandIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.loader-brand em { color: var(--red); font-style: normal; }
+.loader-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; letter-spacing: 6px; text-transform: uppercase;
+  color: #444; margin-bottom: 48px;
+  animation: brandIn 0.5s 0.45s ease both;
+}
+.loader-track {
+  width: 280px; height: 2px; background: #1a1a1a;
+  position: relative; overflow: visible;
+}
+.loader-car {
+  position: absolute; top: -6px; left: -4px;
+  width: 12px; height: 4px; background: var(--red);
+  border-radius: 1px;
+  animation: raceLoad 1.8s cubic-bezier(.4,0,.2,1) forwards;
+  box-shadow: 0 0 20px var(--red), -8px 0 12px rgba(232,0,31,0.5);
+}
+@keyframes raceLoad {
+  0%   { left: -4px; }
+  100% { left: 284px; }
+}
+.loader-pct {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 3px; color: #333;
+  margin-top: 20px; text-transform: uppercase;
+}
 
-/* SECTIONS */
-section{padding:90px 64px;position:relative;}
+/* ── CHECKERBOARD SEPARATOR ── */
+.checker-row {
+  height: 12px; width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--red) 0px, var(--red) 24px,
+    var(--bg) 24px, var(--bg) 48px
+  );
+  position: relative; z-index: 2;
+  transition: background 0.5s;
+}
+.checker-row.alt {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--bg) 0px, var(--bg) 24px,
+    var(--red) 24px, var(--red) 48px
+  );
+}
 
-/* MISSION */
-.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.mission-text .sec-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
-.mission-text .sec-label::before{content:'';width:16px;height:2px;background:var(--red);}
-.mission-text h2{font-family:'Racing Sans One',cursive;font-size:clamp(32px,4vw,52px);line-height:1;margin-bottom:24px;}
-.mission-text p{font-size:15px;color:var(--text-dim);line-height:1.85;margin-bottom:16px;}
-.mission-visual{position:relative;height:460px;}
-.mission-img{width:100%;height:100%;object-fit:cover;filter:saturate(.6) brightness(.55);}
-.mission-visual::before,.mission-visual::after{content:'';position:absolute;z-index:2;width:28px;height:28px;border-color:var(--red);border-style:solid;}
-.mission-visual::before{top:14px;left:14px;border-width:2px 0 0 2px;}
-.mission-visual::after{bottom:14px;right:14px;border-width:0 2px 2px 0;}
-.mission-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,0,31,.12),transparent 60%);}
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 22px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: var(--transition);
+}
+nav.scrolled {
+  padding: 14px 64px;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+[data-theme="light"] nav.scrolled {
+  background: rgba(240,240,238,0.95);
+}
+.nav-logo {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 26px; letter-spacing: 4px;
+  color: var(--text); text-decoration: none;
+  position: relative;
+}
+.nav-logo em { color: var(--red); font-style: normal; }
+.nav-logo::after {
+  content: 'MOTORSPORT';
+  position: absolute; bottom: -8px; left: 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 8px; letter-spacing: 4px; color: var(--red);
+  font-weight: 700;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text-dim);
+  text-decoration: none; transition: color .25s;
+  position: relative;
+}
+.nav-links a::before {
+  content: '';
+  position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 2px; background: var(--red);
+  transform: scaleX(0); transform-origin: right;
+  transition: transform .3s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::before { transform: scaleX(1); transform-origin: left; }
+.nav-right { display: flex; align-items: center; gap: 14px; }
 
-/* NUMBERS */
-#numbers{background:var(--surface);border-top:2px solid var(--red);}
-.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);}
-.num-box{background:var(--surface);padding:48px 32px;text-align:center;position:relative;overflow:hidden;transition:var(--tr);}
-.num-box::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:transparent;transition:background .3s;}
-.num-box:hover{background:var(--surface2);}
-.num-box:hover::before{background:var(--red);}
-.num-val{font-family:'Racing Sans One',cursive;font-size:56px;color:var(--red);line-height:1;margin-bottom:8px;}
-.num-lbl{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);}
+/* Theme toggle — race flag style */
+.theme-btn {
+  width: 52px; height: 26px; cursor: auto;
+  background: var(--surface2); border: 1px solid var(--border2);
+  position: relative; overflow: hidden;
+  transition: var(--transition);
+}
+.theme-btn-inner {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(2,1fr);
+  transition: opacity .3s;
+}
+.theme-cell { background: #fff; }
+.theme-cell:nth-child(1),.theme-cell:nth-child(4),.theme-cell:nth-child(6),.theme-cell:nth-child(7) { background: #000; }
+[data-theme="light"] .theme-cell { background: #ccc; }
+[data-theme="light"] .theme-cell:nth-child(1),
+[data-theme="light"] .theme-cell:nth-child(4),
+[data-theme="light"] .theme-cell:nth-child(6),
+[data-theme="light"] .theme-cell:nth-child(7) { background: #666; }
+.theme-indicator {
+  position: absolute; inset: 3px; border-radius: 1px;
+  background: var(--red); display: flex; align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; letter-spacing: 1px;
+  color: #fff;
+  transition: var(--transition);
+  mix-blend-mode: normal;
+}
+.theme-btn:hover .theme-indicator { background: var(--red2); }
 
-/* TIMELINE */
-#timeline{background:var(--bg);}
-.timeline-title{font-family:'Racing Sans One',cursive;font-size:clamp(32px,4vw,52px);margin-bottom:60px;}
-.timeline{position:relative;max-width:800px;}
-.timeline::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--red),rgba(232,0,31,.1));}
-.tl-item{display:flex;gap:40px;margin-bottom:48px;position:relative;opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s;}
-.tl-item.vis{opacity:1;transform:translateX(0);}
-.tl-dot{width:44px;height:44px;border-radius:50%;border:2px solid var(--red);background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Racing Sans One',cursive;font-size:10px;color:var(--red);position:relative;z-index:1;}
-.tl-dot.big{background:var(--red);color:#fff;}
-.tl-content{flex:1;padding-top:10px;}
-.tl-year{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
-.tl-heading{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
-.tl-text{font-size:13px;color:var(--text-dim);line-height:1.7;}
+/* Compare badge */
+.cmp-nav-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent; border: 1px solid var(--red);
+  color: var(--red); padding: 8px 16px; cursor: auto;
+  transition: var(--transition);
+  display: none; align-items: center; gap: 8px;
+  clip-path: var(--clip-sharp);
+  animation: fadeInScale 0.3s ease;
+}
+@keyframes fadeInScale { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.cmp-nav-btn.show { display: flex; }
+.cmp-nav-btn:hover { background: var(--red); color: #fff; }
+.cmp-count-pill {
+  background: var(--red); color: #fff;
+  width: 18px; height: 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800;
+}
 
-/* TEAM */
-#team{background:var(--surface);}
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:48px;}
-.team-card{background:var(--surface);overflow:hidden;position:relative;transition:var(--tr);}
-.team-card:hover{background:var(--surface2);}
-.team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .3s;z-index:2;}
-.team-card:hover::before{background:var(--red);}
-.team-photo{height:260px;overflow:hidden;position:relative;}
-.team-photo img{width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(.7) brightness(.75);transition:transform .6s,filter .4s;}
-.team-card:hover .team-photo img{transform:scale(1.06);filter:saturate(1) brightness(.9);}
-.team-photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%);}
-.team-info{padding:20px 22px 22px;}
-.team-role{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
-.team-name{font-family:'Racing Sans One',cursive;font-size:22px;letter-spacing:1px;margin-bottom:8px;}
-.team-bio{font-size:12px;color:var(--text-dim);line-height:1.65;}
+.nav-cta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--red); color: #fff;
+  border: none; padding: 11px 28px; cursor: auto;
+  transition: var(--transition);
+  clip-path: var(--clip-sharp);
+  position: relative; overflow: hidden;
+}
+.nav-cta::after {
+  content: ''; position: absolute;
+  top: -50%; left: -60%; width: 40%; height: 200%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-20deg);
+  transition: left .5s;
+}
+.nav-cta:hover::after { left: 130%; }
+.nav-cta:hover { background: #fff; color: var(--red); box-shadow: var(--shadow-red); }
 
-/* VALUES */
-#values{background:var(--bg2);}
-.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:48px;}
-.val-card{background:var(--surface);padding:36px;border-left:3px solid transparent;transition:var(--tr);opacity:0;transform:translateY(20px);}
-.val-card.vis{opacity:1;transform:translateY(0);}
-.val-card:hover{border-left-color:var(--red);background:var(--surface2);}
-.val-icon{font-size:36px;margin-bottom:16px;display:block;}
-.val-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
-.val-text{font-size:13px;color:var(--text-dim);line-height:1.7;}
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; position: relative;
+  overflow: hidden; display: flex; align-items: center;
+  padding: 160px 64px 100px;
+  background: var(--bg2);
+}
+.hero-stripe-bg {
+  position: absolute; inset: 0;
+  background: var(--stripe);
+  opacity: 0.5;
+}
+/* Red side slash */
+.hero-slash {
+  position: absolute; top: 0; right: 0;
+  width: 52%; height: 100%;
+  background: linear-gradient(170deg, transparent 30%, var(--red-dim) 100%);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.hero-slash::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, transparent, var(--red) 40%, var(--red) 60%, transparent);
+}
+/* Speed lines */
+.speed-lines {
+  position: absolute; inset: 0; pointer-events: none;
+  overflow: hidden;
+}
+.speed-line {
+  position: absolute; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  opacity: 0;
+  animation: speedLine 3s ease-in-out infinite;
+}
+@keyframes speedLine {
+  0%   { opacity: 0; transform: translateX(-100%); }
+  20%  { opacity: 0.4; }
+  80%  { opacity: 0.1; }
+  100% { opacity: 0; transform: translateX(100vw); }
+}
+.hero-content { position: relative; z-index: 3; max-width: 640px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 28px;
+  animation: heroIn 0.7s ease both;
+}
+.hero-eyebrow::before {
+  content: ''; width: 28px; height: 2px; background: var(--red);
+}
+.hero-eyebrow::after {
+  content: ''; width: 6px; height: 6px;
+  background: var(--red); border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+.hero-title {
+  font-family: 'Racing Sans One', cursive;
+  font-size: clamp(62px, 9.5vw, 130px);
+  line-height: 0.9; letter-spacing: -1px;
+  margin-bottom: 28px;
+  animation: heroIn 0.7s 0.1s ease both;
+}
+@keyframes heroIn { from { opacity:0; transform: translateY(32px) } to { opacity:1; transform: translateY(0) } }
+.hero-title .t-white { color: var(--text); display: block; }
+.hero-title .t-red   { color: var(--red); display: block; }
+.hero-title .t-out   {
+  display: block;
+  -webkit-text-stroke: 2px var(--red); color: transparent;
+}
+.hero-desc {
+  font-size: 15px; color: var(--text-dim); line-height: 1.8;
+  max-width: 420px; margin-bottom: 44px;
+  animation: heroIn 0.7s 0.2s ease both;
+}
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: heroIn 0.7s 0.3s ease both;
+}
+.hero-car {
+  position: absolute; right: -20px; bottom: 0;
+  width: 55%; height: 90%; z-index: 2;
+  pointer-events: none;
+}
+.hero-car img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: left bottom;
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%),
+    linear-gradient(to top, transparent 0%, black 15%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, black 22%, black 78%, transparent 100%),
+    linear-gradient(to top, transparent 0%, black 15%);
+  -webkit-mask-composite: destination-in;
+  filter: saturate(1.05) contrast(1.05);
+  animation: carSlide 1s 0.5s ease both;
+}
+@keyframes carSlide { from { opacity:0; transform:translateX(80px) } to { opacity:1; transform:translateX(0) } }
+/* Glow under car */
+.hero-car::after {
+  content: '';
+  position: absolute; bottom: 0; left: 10%; right: 10%; height: 80px;
+  background: radial-gradient(ellipse, var(--red-glow) 0%, transparent 70%);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+@keyframes glowPulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+/* RPM / stats */
+.hero-stats {
+  position: absolute; right: 64px; bottom: 80px; z-index: 4;
+  display: flex; gap: 0;
+  animation: heroIn 0.7s 0.6s ease both;
+}
+.stat-box {
+  padding: 18px 24px; text-align: right;
+  border-right: 1px solid var(--border);
+  background: rgba(10,10,10,0.7);
+  backdrop-filter: blur(10px);
+  position: relative; overflow: hidden;
+}
+[data-theme="light"] .stat-box { background: rgba(240,240,238,0.85); }
+.stat-box:last-child { border-right: none; }
+.stat-box::before {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--red);
+}
+.stat-n {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 42px; color: var(--red); line-height: 1;
+}
+.stat-l {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-top: 3px;
+}
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 64px; z-index: 4;
+  display: flex; align-items: center; gap: 12px;
+  animation: heroIn 0.7s 0.9s ease both;
+}
+.scroll-track { width: 48px; height: 1px; background: var(--border2); position: relative; overflow: hidden; }
+.scroll-track::after {
+  content: ''; position: absolute;
+  left: -100%; top: 0; width: 100%; height: 100%;
+  background: var(--red);
+  animation: scanLine 2s ease infinite;
+}
+@keyframes scanLine { 0%{left:-100%} 100%{left:150%} }
+.scroll-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--text-muted);
+}
 
-/* CTA BANNER */
-.cta-banner{background:var(--red);padding:80px 64px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
-.cta-banner h2{font-family:'Racing Sans One',cursive;font-size:clamp(28px,4vw,48px);color:#fff;line-height:1;}
-.cta-banner p{font-size:14px;color:rgba(255,255,255,.75);margin-top:8px;}
-.btn-white{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:#fff;color:var(--red);border:none;padding:16px 40px;cursor:none;transition:var(--tr);clip-path:var(--clip);white-space:nowrap;}
-.btn-white:hover{background:#000;color:#fff;}
+/* ── BUTTONS ── */
+.btn-red {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--red); color: #fff;
+  border: none; padding: 16px 40px;
+  cursor: auto; transition: var(--transition);
+  clip-path: var(--clip-sharp);
+  position: relative; overflow: hidden;
+}
+.btn-red::after {
+  content: ''; position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  transition: left .5s;
+}
+.btn-red:hover::after { left: 150%; }
+.btn-red:hover { background: var(--red2); box-shadow: var(--shadow-red); transform: translateY(-2px); }
+.btn-outline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent; color: var(--text);
+  border: 1.5px solid var(--border2); padding: 15px 32px;
+  cursor: auto; transition: var(--transition);
+  display: flex; align-items: center; gap: 10px;
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
 
-/* FOOTER */
-footer{background:var(--bg);border-top:2px solid var(--border);padding:48px 64px 32px;}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:1px;color:var(--text-muted);flex-wrap:wrap;gap:10px;}
-.footer-links{display:flex;gap:24px;}
-.footer-links a{color:var(--text-muted);text-decoration:none;font-size:12px;transition:color .25s;}
-.footer-links a:hover{color:var(--red);}
-.footer-logo{font-family:'Racing Sans One',cursive;font-size:22px;letter-spacing:4px;}
-.footer-logo em{color:var(--red);font-style:normal;}
+/* ── TICKER ── */
+.ticker-wrap {
+  background: var(--red);
+  padding: 12px 0; overflow: hidden;
+  position: relative; z-index: 2;
+}
+.ticker-track {
+  display: flex; gap: 0; width: max-content;
+  animation: tick 22s linear infinite;
+}
+.ticker-item {
+  display: flex; align-items: center; gap: 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: #fff; white-space: nowrap;
+}
+.ticker-sep {
+  margin: 0 28px; width: 6px; height: 6px;
+  background: rgba(255,255,255,0.4); border-radius: 50%;
+}
+@keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-/* REVEAL */
-.rev{opacity:0;transform:translateY(28px);transition:opacity .65s,transform .65s;}
-.rev.vis{opacity:1;transform:translateY(0);}
+/* ── SEARCH ── */
+#search-box {
+  background: var(--surface);
+  border-top: 3px solid var(--red);
+  padding: 40px 64px;
+  position: relative; z-index: 2;
+}
+.search-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+}
+.search-label::before { content: ''; width: 20px; height: 2px; background: var(--red); }
+.search-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr auto;
+  gap: 2px; background: var(--border);
+}
+.s-field {
+  background: var(--surface2);
+  padding: 0;
+  display: flex; flex-direction: column;
+}
+.s-field-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text-muted);
+  padding: 10px 16px 0;
+}
+.s-field input, .s-field select {
+  background: transparent; border: none;
+  color: var(--text); padding: 8px 16px 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 600; letter-spacing: 0.5px;
+  outline: none; cursor: auto;
+  transition: var(--transition);
+  appearance: none;
+  width: 100%;
+}
+.s-field:focus-within {
+  background: rgba(232,0,31,0.06);
+  outline: 2px solid var(--red);
+  outline-offset: -2px;
+}
+.s-field select option { background: var(--surface2); }
+.search-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 800; letter-spacing: 3px;
+  text-transform: uppercase;
+  background: var(--red); color: #fff;
+  border: none; padding: 0 36px;
+  cursor: auto; transition: var(--transition);
+  display: flex; align-items: center; gap: 12px;
+  white-space: nowrap;
+}
+.search-btn:hover { background: var(--red2); box-shadow: var(--shadow-red); }
+.search-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* ── SECTION COMMONS ── */
+section { padding: 100px 64px; position: relative; z-index: 1; }
+.sec-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 12px;
+}
+.sec-eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--red); }
+.sec-title {
+  font-family: 'Racing Sans One', cursive;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 0.95; letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+.sec-desc {
+  font-size: 14px; color: var(--text-dim);
+  line-height: 1.8; max-width: 460px;
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ── CARS ── */
+#cars { background: var(--bg2); }
+.cars-header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; margin-bottom: 40px;
+  flex-wrap: wrap; gap: 20px;
+}
+.filter-tabs {
+  display: flex; gap: 2px; background: var(--border);
+}
+.ftab {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--surface2); color: var(--text-muted);
+  border: none; padding: 10px 22px;
+  cursor: auto; transition: var(--transition);
+  position: relative;
+}
+.ftab::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--red); transform: scaleX(0);
+  transition: transform .25s;
+}
+.ftab.on { background: var(--surface); color: var(--text); }
+.ftab.on::after { transform: scaleX(1); }
+.ftab:hover:not(.on) { color: var(--text-dim); background: var(--surface3); }
+
+.compare-hint {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px; color: var(--text-muted);
+  display: flex; align-items: center; gap: 6px;
+}
+.compare-hint::before {
+  content: '⚑'; color: var(--red); font-size: 14px;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px; background: var(--border);
+}
+
+/* CAR CARD */
+.car-card {
+  background: var(--surface);
+  position: relative; overflow: hidden;
+  cursor: auto;
+  transition: var(--transition);
+  opacity: 0; transform: translateY(28px);
+}
+.car-card.vis { opacity: 1; transform: translateY(0); }
+.car-card:hover {
+  background: var(--surface2);
+  box-shadow: inset 0 0 0 2px var(--red), var(--shadow-red);
+  z-index: 2;
+}
+/* Racing stripe on side */
+.car-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  background: transparent;
+  transition: background .3s;
+  z-index: 10;
+}
+.car-card:hover::before { background: var(--red); }
+
+/* Compare toggle */
+.car-cmp-btn {
+  position: absolute; top: 12px; right: 12px; z-index: 6;
+  width: 28px; height: 28px;
+  background: rgba(10,10,10,0.8); backdrop-filter: blur(6px);
+  border: 1.5px solid var(--border2);
+  color: var(--text-muted);
+  font-size: 14px; cursor: auto;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+}
+.car-cmp-btn:hover { border-color: var(--red); color: var(--red); }
+.car-cmp-btn.active {
+  background: var(--red); border-color: var(--red); color: #fff;
+  box-shadow: 0 0 12px var(--red-glow);
+}
+
+.car-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 5;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background: var(--red); color: #fff;
+  padding: 4px 10px;
+  clip-path: var(--clip-left);
+}
+.car-badge.b-best { background: #ff9900; color: #000; }
+.car-badge.b-new  { background: #00cc66; color: #000; }
+.car-badge.b-ev   { background: #0099ff; color: #fff; }
+
+.car-photo {
+  height: 200px; overflow: hidden; position: relative;
+  background: var(--bg3);
+}
+.car-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s ease, filter .4s;
+  filter: saturate(0.8) brightness(0.85);
+}
+.car-card:hover .car-photo img {
+  transform: scale(1.06);
+  filter: saturate(1.1) brightness(0.95);
+}
+/* Red tint overlay on hover */
+.car-photo-tint {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(10,10,10,0.9) 100%);
+  transition: background .3s;
+}
+.car-card:hover .car-photo-tint {
+  background: linear-gradient(180deg, transparent 30%, rgba(232,0,31,0.08) 60%, rgba(10,10,10,0.9) 100%);
+}
+.car-cat-tag {
+  position: absolute; bottom: 10px; right: 10px; z-index: 2;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.7); color: var(--text-dim);
+  padding: 4px 8px; border: 1px solid var(--border2);
+}
+
+.car-body { padding: 20px 20px 18px; }
+.car-make {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--red);
+  margin-bottom: 2px;
+}
+.car-name {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 26px; letter-spacing: 1px; line-height: 1;
+  margin-bottom: 14px; color: var(--text);
+}
+.car-specs {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2px; background: var(--border);
+  margin-bottom: 16px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.cspec {
+  background: var(--bg3);
+  padding: 8px 4px; text-align: center;
+  transition: background .3s;
+}
+.car-card:hover .cspec { background: rgba(232,0,31,0.06); }
+.cspec-ico { font-size: 14px; display: block; margin-bottom: 3px; }
+.cspec-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: 1px;
+  color: var(--text-dim); text-transform: uppercase;
+}
+.car-foot {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.car-price-num {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 32px; color: var(--red); line-height: 1;
+}
+.car-price-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; color: var(--text-muted); letter-spacing: 1.5px;
+  text-transform: uppercase; margin-top: 2px;
+}
+.car-rent-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent; color: var(--red);
+  border: 1.5px solid var(--red);
+  padding: 8px 18px; cursor: auto;
+  transition: var(--transition);
+  clip-path: var(--clip-sharp);
+  position: relative; overflow: hidden;
+}
+.car-rent-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--red); transform: scaleX(0);
+  transform-origin: left; transition: transform .25s; z-index: 0;
+}
+.car-rent-btn span { position: relative; z-index: 1; transition: color .25s; }
+.car-rent-btn:hover::before { transform: scaleX(1); }
+.car-rent-btn:hover span { color: #fff; }
+
+/* ── COMPARE BAR (bottom) ── */
+.cmp-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+  background: var(--bg);
+  border-top: 2px solid var(--red);
+  padding: 14px 64px;
+  display: none; align-items: center; gap: 20px;
+  animation: slideUp .4s ease;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+}
+.cmp-bar.show { display: flex; }
+@keyframes slideUp { from{transform:translateY(100%);opacity:0} to{transform:translateY(0);opacity:1} }
+.cmp-slots { display: flex; gap: 8px; flex: 1; }
+.cmp-slot {
+  flex: 1; max-width: 180px; height: 52px;
+  border: 1.5px dashed var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-muted); position: relative;
+  transition: var(--transition);
+}
+.cmp-slot.filled {
+  border-style: solid; border-color: var(--red);
+  background: var(--red-dim); color: var(--text);
+  font-weight: 600; font-size: 10px;
+}
+.cmp-slot-x {
+  position: absolute; top: -8px; right: -8px;
+  width: 18px; height: 18px;
+  background: var(--red); color: #fff;
+  border: none; border-radius: 50%; font-size: 11px;
+  cursor: auto; display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+}
+.cmp-bar-actions { display: flex; gap: 10px; }
+
+/* ── COMPARE MODAL ── */
+.cmp-modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.9); backdrop-filter: blur(14px);
+  z-index: 2000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity .35s;
+}
+.cmp-modal-bg.open { opacity: 1; pointer-events: all; }
+.cmp-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+  width: min(960px,96vw); max-height: 88vh; overflow-y: auto;
+  transform: scale(.95) translateY(16px);
+  transition: transform .35s cubic-bezier(.25,.8,.25,1);
+}
+.cmp-modal-bg.open .cmp-modal { transform: scale(1) translateY(0); }
+.cmp-modal-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 28px; border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: var(--surface); z-index: 1;
+}
+.cmp-modal-title {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 24px; letter-spacing: 2px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cmp-modal-title::before { content: '⚑'; color: var(--red); }
+.modal-close {
+  background: none; border: none; color: var(--text-muted);
+  font-size: 26px; cursor: auto; transition: color .2s; line-height: 1;
+}
+.modal-close:hover { color: var(--red); }
+.cmp-table { width: 100%; border-collapse: collapse; }
+.cmp-table th, .cmp-table td { padding: 14px 20px; border-bottom: 1px solid var(--border); }
+.cmp-table th {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 20px; letter-spacing: 1px;
+  border-bottom: 2px solid var(--red);
+  background: var(--surface2);
+}
+.cmp-table td.row-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-muted);
+  background: var(--bg2); width: 130px;
+  border-right: 1px solid var(--border);
+}
+.cmp-table td.win {
+  color: var(--red); font-weight: 700;
+  background: var(--red-dim);
+}
+.cmp-table td {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+}
+.cmp-car-img { width: 100%; height: 120px; object-fit: cover; display: block; margin-bottom: 10px; }
+.cmp-price-big {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 30px; color: var(--red);
+}
+
+/* ── FEATURES ── */
+#features { background: var(--bg); overflow: hidden; }
+.feat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; margin-top: 60px;
+}
+.feat-list { display: flex; flex-direction: column; gap: 2px; background: var(--border); }
+.feat-row {
+  display: flex; gap: 0;
+  background: var(--surface);
+  border-left: 3px solid transparent;
+  transition: var(--transition);
+  opacity: 0; transform: translateX(-20px);
+  overflow: hidden;
+}
+.feat-row.vis { opacity: 1; transform: translateX(0); }
+.feat-row:hover { border-left-color: var(--red); background: var(--surface2); }
+.feat-num {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 48px; color: var(--border2);
+  padding: 20px 24px; flex-shrink: 0; line-height: 1;
+  transition: color .3s;
+  min-width: 80px; text-align: center;
+}
+.feat-row:hover .feat-num { color: var(--red-dim); }
+.feat-content { padding: 20px 20px 20px 0; flex: 1; }
+.feat-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700; letter-spacing: 1px;
+  margin-bottom: 5px; text-transform: uppercase;
+}
+.feat-desc { font-size: 13px; color: var(--text-dim); line-height: 1.65; }
+
+.feat-visual-wrap {
+  position: relative; height: 520px;
+  display: flex; align-items: center; justify-content: center;
+}
+.feat-bg-img {
+  position: absolute; inset: 0;
+  overflow: hidden;
+}
+.feat-bg-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(0.5) brightness(0.4);
+}
+.feat-bg-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(232,0,31,0.15), transparent 60%);
+}
+.feat-overlay-text {
+  position: relative; z-index: 2; text-align: center;
+}
+.feat-big-num {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 100px; line-height: 1; color: var(--red);
+  text-shadow: 0 0 60px var(--red-glow);
+}
+.feat-big-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 4px;
+  text-transform: uppercase; color: #fff; opacity: 0.7;
+  margin-top: 6px;
+}
+/* Corner brackets */
+.feat-visual-wrap::before, .feat-visual-wrap::after {
+  content: '';
+  position: absolute; z-index: 3; width: 24px; height: 24px;
+  border-color: var(--red); border-style: solid;
+}
+.feat-visual-wrap::before { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+.feat-visual-wrap::after  { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+
+/* ── BOOKING ── */
+#booking { background: var(--bg2); }
+.booking-wrap {
+  max-width: 1000px; margin: 50px auto 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+}
+/* Progress */
+.prog-strip {
+  display: flex; background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+.prog-item {
+  flex: 1; padding: 18px 20px;
+  display: flex; align-items: center; gap: 14px;
+  position: relative; cursor: auto;
+  transition: background .25s;
+}
+.prog-item::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: transparent; transition: background .3s;
+}
+.prog-item.cur::after { background: var(--red); }
+.prog-item.done { background: rgba(232,0,31,0.04); }
+.prog-item.done::after { background: rgba(232,0,31,0.3); }
+.prog-circle {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1.5px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--text-muted);
+  flex-shrink: 0; transition: all .3s;
+}
+.prog-item.cur .prog-circle {
+  border-color: var(--red); color: var(--red);
+  background: var(--red-dim);
+  box-shadow: 0 0 16px var(--red-glow);
+}
+.prog-item.done .prog-circle { background: var(--red); border-color: var(--red); color: #fff; }
+.prog-step-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px;
+}
+.prog-step-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.5px; color: var(--text);
+}
+
+/* Form pages */
+.f-page { display: none; padding: 44px 48px; animation: pageIn .4s ease both; }
+.f-page.on { display: block; }
+@keyframes pageIn { from{opacity:0;transform:translateX(24px)} to{opacity:1;transform:translateX(0)} }
+.f-page-title {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 32px; letter-spacing: 1px; margin-bottom: 6px;
+}
+.f-page-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 36px; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.f-row.full { grid-template-columns: 1fr; }
+.f-group { display: flex; flex-direction: column; gap: 6px; }
+.f-group label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.f-group input, .f-group select, .f-group textarea {
+  background: var(--bg2); border: 1px solid var(--border);
+  color: var(--text); padding: 12px 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 500;
+  outline: none; transition: var(--transition);
+  appearance: none; cursor: auto;
+}
+.f-group input:focus, .f-group select:focus, .f-group textarea:focus {
+  border-color: var(--red);
+  background: var(--red-dim);
+  box-shadow: 0 0 0 2px rgba(232,0,31,0.1);
+}
+.f-group textarea { resize: none; height: 88px; }
+.f-group select option { background: var(--surface); }
+.f-group.err input, .f-group.err select { border-color: #ff4444!important; }
+.err-txt { font-size: 11px; color: #ff4444; display: none; }
+.f-group.err .err-txt { display: block; }
+
+/* Live price preview */
+.live-price {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  padding: 16px 20px; margin-bottom: 20px;
+  transition: border-color .3s, background .3s;
+}
+.live-price.flash {
+  border-color: var(--red);
+  background: var(--red-dim);
+}
+.lp-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.lp-days { font-size: 13px; color: var(--text-dim); }
+.lp-amount {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 38px; color: var(--red); line-height: 1;
+}
+
+/* Extras */
+.extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); margin-bottom: 24px; }
+.extra {
+  background: var(--surface);
+  padding: 16px 18px; cursor: auto;
+  display: flex; align-items: center; gap: 14px;
+  transition: var(--transition); position: relative;
+  border-left: 3px solid transparent;
+}
+.extra:hover { background: var(--surface2); border-left-color: rgba(232,0,31,0.4); }
+.extra.on { background: var(--red-dim); border-left-color: var(--red); }
+.extra-check {
+  width: 22px; height: 22px; flex-shrink: 0;
+  border: 1.5px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: transparent; transition: all .25s;
+}
+.extra.on .extra-check { background: var(--red); border-color: var(--red); color: #fff; }
+.extra-info { flex: 1; }
+.extra-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 2px;
+}
+.extra-desc { font-size: 11px; color: var(--text-muted); }
+.extra-price {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 22px; color: var(--red); flex-shrink: 0;
+}
+
+/* Payment summary */
+.pay-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.sum-box {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-top: 2px solid var(--red); padding: 24px;
+}
+.sum-header {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--red); margin-bottom: 18px;
+}
+.sum-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 14px;
+}
+.sum-row .lbl { color: var(--text-dim); }
+.sum-row .val { font-weight: 700; }
+.sum-total-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 0 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 700;
+}
+.sum-total-amount {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 38px; color: var(--red); line-height: 1;
+}
+/* Card */
+.cc-card {
+  height: 165px; padding: 22px;
+  background: linear-gradient(135deg, #1c0808, #0d0d0d, #180808);
+  border: 1px solid rgba(232,0,31,0.2);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
+  margin-bottom: 20px;
+  transition: transform .3s, box-shadow .3s;
+}
+[data-theme="light"] .cc-card { background: linear-gradient(135deg, #2a0a0a, #1a1a1a, #200808); }
+.cc-card:hover { transform: scale(1.01); box-shadow: 0 12px 36px rgba(232,0,31,0.2); }
+.cc-card::before {
+  content: ''; position: absolute;
+  top: -40px; right: -40px; width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(232,0,31,0.15), transparent 70%);
+}
+.cc-chip { width: 36px; height: 26px; background: rgba(232,0,31,0.3); border: 1px solid rgba(232,0,31,0.5); border-radius: 3px; position: relative; z-index: 1; }
+.cc-num { font-family: 'Racing Sans One', cursive; font-size: 19px; letter-spacing: 4px; color: rgba(255,255,255,.55); position: relative; z-index: 1; }
+.cc-bottom { display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 1; }
+.cc-name-disp { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.35); }
+.cc-exp-disp { font-size: 13px; color: rgba(255,255,255,.35); }
+.cc-brand { font-family: 'Racing Sans One', cursive; font-size: 16px; color: rgba(255,255,255,.18); letter-spacing: 2px; }
+
+/* Form nav */
+.f-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 28px; border-top: 1px solid var(--border); margin-top: 8px;
+}
+.f-nav-left { display: flex; align-items: center; gap: 14px; }
+.f-step-ind {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 2px; color: var(--text-muted);
+  text-transform: uppercase;
+}
+.btn-back {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-dim); padding: 11px 22px;
+  cursor: auto; transition: var(--transition);
+}
+.btn-back:hover { border-color: var(--border2); color: var(--text); }
+.btn-next {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--red); color: #fff;
+  border: none; padding: 12px 36px;
+  cursor: auto; transition: var(--transition);
+  clip-path: var(--clip-sharp);
+  position: relative; overflow: hidden;
+}
+.btn-next:hover { background: var(--red2); box-shadow: var(--shadow-red); transform: translateY(-2px); }
+
+/* Success */
+.success-wrap { text-align: center; padding: 72px 48px; }
+.success-flag {
+  display: flex; justify-content: center; margin-bottom: 32px;
+  animation: flagWave .6s ease both;
+}
+@keyframes flagWave { from{transform:scaleX(0)} to{transform:scaleX(1)} }
+.success-flag-inner { display: grid; grid-template-columns: repeat(6,18px); grid-template-rows: repeat(3,18px); }
+.sf-cell:nth-child(odd) { background: #fff; }
+.sf-cell:nth-child(even) { background: #000; }
+.success-title {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 52px; letter-spacing: 2px; margin-bottom: 12px;
+}
+.success-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; max-width: 360px; margin: 0 auto 28px; }
+.res-code-box {
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 14px 32px;
+  background: var(--red-dim); border: 1px solid rgba(232,0,31,0.3);
+  font-family: 'Racing Sans One', cursive;
+  font-size: 26px; letter-spacing: 6px; color: var(--red);
+  margin-bottom: 40px;
+}
+.res-code-box::before { content: '⚑'; font-size: 20px; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { background: var(--bg2); }
+.t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); margin-top: 50px; }
+.t-card {
+  background: var(--surface); padding: 30px;
+  position: relative; overflow: hidden;
+  transition: var(--transition);
+}
+.t-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: transparent; transition: background .3s;
+}
+.t-card:hover { background: var(--surface2); }
+.t-card:hover::before { background: var(--red); }
+.t-stars { color: var(--red); font-size: 14px; letter-spacing: 3px; margin-bottom: 16px; }
+.t-text {
+  font-size: 14px; line-height: 1.75; color: var(--text-dim);
+  font-style: italic; margin-bottom: 24px;
+}
+.t-author { display: flex; align-items: center; gap: 12px; }
+.t-ava {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), #660010);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 800; color: #fff; flex-shrink: 0;
+}
+.t-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.t-city {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; color: var(--text-muted); letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ── CITIES ── */
+#cities { background: var(--bg); }
+.cities-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--border); margin-top: 50px; }
+.city-card { position: relative; height: 210px; overflow: hidden; cursor: auto; }
+.city-card img { width:100%; height:100%; object-fit:cover; transition: transform .6s, filter .5s; filter: saturate(.5) brightness(.45); }
+.city-card:hover img { transform: scale(1.1); filter: saturate(.9) brightness(.65); }
+.city-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; background: linear-gradient(to top, rgba(10,10,10,.9) 0%, transparent 55%); }
+.city-card:hover .city-overlay::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--red);
+}
+.city-name { font-family: 'Racing Sans One', cursive; font-size: 28px; letter-spacing: 2px; transition: transform .3s; }
+.city-card:hover .city-name { transform: translateX(6px); }
+.city-count { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-top: 2px; }
+
+/* ── CAR DETAIL MODAL ── */
+.car-modal-bg {
+  position: fixed; inset: 0; background: rgba(0,0,0,.88); backdrop-filter: blur(12px);
+  z-index: 2000; display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity .35s;
+}
+.car-modal-bg.open { opacity:1; pointer-events:all; }
+.car-modal {
+  background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--red);
+  width: min(600px,94vw); max-height: 90vh; overflow-y: auto;
+  transform: scale(.94) translateY(16px);
+  transition: transform .35s cubic-bezier(.25,.8,.25,1);
+}
+.car-modal-bg.open .car-modal { transform: scale(1) translateY(0); }
+.car-modal-head { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; border-bottom: 1px solid var(--border); }
+.car-modal-title { font-family: 'Racing Sans One', cursive; font-size: 22px; letter-spacing: 1px; }
+.car-modal-body { padding: 28px; }
+.modal-car-strip { display: flex; margin-bottom: 22px; border: 1px solid var(--border); overflow: hidden; }
+.modal-car-img { width: 200px; height: 128px; object-fit: cover; flex-shrink: 0; }
+.modal-car-info { padding: 18px 20px; flex: 1; }
+.modal-car-make { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 3px; }
+.modal-car-model { font-family: 'Racing Sans One', cursive; font-size: 26px; margin-bottom: 8px; }
+.modal-car-price { font-family: 'Racing Sans One', cursive; font-size: 32px; color: var(--red); }
+.modal-car-per { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; color: var(--text-muted); letter-spacing: 1px; }
+.modal-btns { display: flex; gap: 12px; margin-top: 22px; }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 32px; right: 32px; z-index: 3000;
+  background: var(--surface); border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  padding: 14px 22px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+  transform: translateX(120%); opacity: 0;
+  transition: transform .4s cubic-bezier(.25,.8,.25,1), opacity .4s;
+  box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  max-width: 320px;
+}
+.toast.show { transform: translateX(0); opacity: 1; }
+.toast-ico { font-size: 16px; flex-shrink: 0; }
+.toast-prog { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--red); animation: toastP 3.5s linear forwards; }
+@keyframes toastP { from{width:100%} to{width:0} }
+
+/* ── BACK TO TOP ── */
+.btt {
+  position: fixed; bottom: 32px; left: 32px; z-index: 500;
+  width: 40px; height: 40px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-muted); font-size: 18px; cursor: auto;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); opacity: 0; transform: translateY(16px);
+  clip-path: var(--clip-sharp);
+}
+.btt.show { opacity: 1; transform: translateY(0); }
+.btt:hover { background: var(--red); color: #fff; border-color: var(--red); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--bg); border-top: 2px solid var(--border);
+  padding: 72px 64px 36px; position: relative; overflow: hidden;
+}
+footer::before {
+  content: 'VELOX';
+  font-family: 'Racing Sans One', cursive;
+  font-size: 240px; color: var(--border);
+  position: absolute; bottom: -30px; right: 32px;
+  pointer-events: none; letter-spacing: 16px;
+  transition: color .5s;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
+.footer-logo { font-family: 'Racing Sans One', cursive; font-size: 28px; letter-spacing: 4px; display: block; margin-bottom: 14px; }
+.footer-logo em { color: var(--red); font-style: normal; }
+.footer-about { font-size: 13px; color: var(--text-dim); line-height: 1.75; max-width: 260px; }
+.footer-col h5 { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 18px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.footer-col a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color .25s; display: flex; align-items: center; gap: 8px; }
+.footer-col a::before { content: '›'; color: var(--red); opacity: 0; transition: opacity .25s; }
+.footer-col a:hover { color: var(--text); }
+.footer-col a:hover::before { opacity: 1; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--border); font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 1px; color: var(--text-muted); flex-wrap: wrap; gap: 10px; }
+.footer-links { display: flex; gap: 22px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; font-size: 12px; transition: color .25s; }
+.footer-links a:hover { color: var(--red); }
+
+/* ── REVEAL ── */
+.rev { opacity: 0; transform: translateY(28px); transition: opacity .65s, transform .65s; }
+.rev.vis { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
+
 <div id="prog"><div id="prog-fill"></div></div>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-cross" id="cursorCross"></div>
+<div class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-flag" id="loaderFlag"></div>
+  <div class="loader-brand">VEL<em>O</em>X</div>
+  <div class="loader-sub">Motorsport Premium Araç Kiralama</div>
+  <div class="loader-track"><div class="loader-car"></div></div>
+  <div class="loader-pct" id="loaderTxt">Hazırlanıyor...</div>
+</div>
 
 <!-- NAV -->
-<nav id="nav">
-  <a href="../index.html" class="nav-logo">VEL<em>O</em>X</a>
+<nav id="navbar">
+  <div class="nav-logo">VEL<em>O</em>X</div>
   <ul class="nav-links">
-    <li><a href="../index.html">Ana Sayfa</a></li>
-    <li><a href="about.html" class="active">Hakkımızda</a></li>
-    <li><a href="projects.html">Projeler</a></li>
-    <li><a href="contact.html">İletişim</a></li>
+    <li><a href="#cars">Araçlar</a></li>
+    <li><a href="#features">Fark</a></li>
+    <li><a href="#cities">Şehirler</a></li>
+    <li><a href="#booking">Rezervasyon</a></li>
+    <li><a href="#testimonials">Yorumlar</a></li>
   </ul>
   <div class="nav-right">
-    <div class="theme-btn" id="themeBtn"><div class="theme-ind" id="themeInd">DARK</div></div>
-    <button class="nav-cta" onclick="location.href='../index.html#booking'">Hemen Kirala</button>
+    <button class="cmp-nav-btn" id="cmpNavBtn" onclick="openCmpModal()">
+      <span>Karşılaştır</span>
+      <div class="cmp-count-pill" id="cmpCount">0</div>
+    </button>
+    <div class="theme-btn" id="themeBtn" title="Tema değiştir">
+      <div class="theme-btn-inner" id="themeCells"></div>
+      <div class="theme-indicator" id="themeInd">DARK</div>
+    </div>
+    <button class="nav-cta" onclick="smoothTo('booking')">Hemen Kirala</button>
   </div>
 </nav>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
-  <div class="page-hero-bg"></div>
-  <div class="page-hero-slash"></div>
-  <div style="position:relative;z-index:2;">
-    <div class="page-eyebrow">Biz Kimiz</div>
-    <div class="page-title">
-      <span>VELOX</span>
-      <span class="t-out">HAKKINDA</span>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-stripe-bg"></div>
+  <div class="hero-slash"></div>
+  <div class="speed-lines" id="speedLines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Türkiye'nin #1 Premium Kiralama Platformu</div>
+    <h1 class="hero-title">
+      <span class="t-white">SÜRMEK</span>
+      <span class="t-red">YETMEz</span>
+      <span class="t-out">HİSSET</span>
+    </h1>
+    <p class="hero-desc">250+ premium araç, 48 şehirde anlık teslimat. Full kasko dahil, sınırsız kilometre, 7/24 destek.</p>
+    <div class="hero-actions">
+      <button class="btn-red" onclick="smoothTo('cars')">Araçları Keşfet</button>
+      <button class="btn-outline" onclick="smoothTo('booking')">→ Rezervasyon Yap</button>
     </div>
+  </div>
+  <div class="hero-car">
+    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1200&q=80&fit=crop" alt="BMW 5 Series">
+  </div>
+  <div class="hero-stats">
+    <div class="stat-box"><div class="stat-n" data-count="250">0</div><div class="stat-l">Premium Araç</div></div>
+    <div class="stat-box"><div class="stat-n" data-count="48">0</div><div class="stat-l">Şehir</div></div>
+    <div class="stat-box"><div class="stat-n" data-count="98">0</div><div class="stat-l">% Memnuniyet</div></div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-track"></div>
+    <span class="scroll-label">Keşfet</span>
+  </div>
+</section>
+
+<div class="checker-row"></div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <div class="ticker-item">⚡ Anlık Rezervasyon<span class="ticker-sep"></span></div>
+    <div class="ticker-item">🛡️ Tam Kasko Dahil<span class="ticker-sep"></span></div>
+    <div class="ticker-item">🌍 48 Şehir<span class="ticker-sep"></span></div>
+    <div class="ticker-item">♾️ Sınırsız KM<span class="ticker-sep"></span></div>
+    <div class="ticker-item">✈️ Havalimanı Servisi<span class="ticker-sep"></span></div>
+    <div class="ticker-item">🕐 7/24 Destek<span class="ticker-sep"></span></div>
+    <div class="ticker-item">💳 Ücretsiz İptal<span class="ticker-sep"></span></div>
+    <div class="ticker-item">⚖️ Araç Karşılaştırma<span class="ticker-sep"></span></div>
+    <div class="ticker-item">⚡ Anlık Rezervasyon<span class="ticker-sep"></span></div>
+    <div class="ticker-item">🛡️ Tam Kasko Dahil<span class="ticker-sep"></span></div>
+    <div class="ticker-item">🌍 48 Şehir<span class="ticker-sep"></span></div>
+    <div class="ticker-item">♾️ Sınırsız KM<span class="ticker-sep"></span></div>
+    <div class="ticker-item">✈️ Havalimanı Servisi<span class="ticker-sep"></span></div>
+    <div class="ticker-item">🕐 7/24 Destek<span class="ticker-sep"></span></div>
+    <div class="ticker-item">💳 Ücretsiz İptal<span class="ticker-sep"></span></div>
+    <div class="ticker-item">⚖️ Araç Karşılaştırma<span class="ticker-sep"></span></div>
   </div>
 </div>
 
-<div class="checker"></div>
-
-<!-- MISSION -->
-<section id="mission" style="background:var(--bg2);">
-  <div class="mission-grid">
-    <div class="mission-text rev">
-      <div class="sec-label">Misyonumuz</div>
-      <h2>Sürüş Bir<br>Ayrıcalıktır</h2>
-      <p>2015 yılında İstanbul'da kurulan VELOX, "araç kiralama" kavramını yeniden tanımlamak amacıyla yola çıktı. Sıradan bir hizmeti, unutulmaz bir deneyime dönüştürme inancıyla büyüdük.</p>
-      <p>Bugün 48 şehirde 250'den fazla premium araçla, Türkiye'nin en güvenilir ve en hızlı araç kiralama platformuyuz. Her rezervasyonda müşterimize sadece bir araç değil; güven, konfor ve özgürlük sunuyoruz.</p>
+<!-- SEARCH -->
+<div id="search-box">
+  <div class="search-label">Araç Sorgula</div>
+  <div class="search-grid">
+    <div class="s-field">
+      <div class="s-field-label">📍 Teslim Noktası</div>
+      <select><option>İstanbul Havalimanı</option><option>Sabiha Gökçen</option><option>Ankara Esenboğa</option><option>İzmir Adnan Menderes</option><option>Antalya Havalimanı</option></select>
     </div>
-    <div class="mission-visual rev">
-      <img class="mission-img" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=700&q=80&fit=crop" alt="VELOX filo">
-      <div class="mission-overlay"></div>
+    <div class="s-field">
+      <div class="s-field-label">📅 Teslim Tarihi</div>
+      <input type="date" id="sFrom">
     </div>
-  </div>
-</section>
-
-<div class="checker alt"></div>
-
-<!-- NUMBERS -->
-<section id="numbers" style="padding:0;">
-  <div class="numbers-grid">
-    <div class="num-box"><div class="num-val" data-count="250">0</div><div class="num-lbl">Premium Araç</div></div>
-    <div class="num-box"><div class="num-val" data-count="48">0</div><div class="num-lbl">Şehir</div></div>
-    <div class="num-box"><div class="num-val" data-count="500000">0</div><div class="num-lbl">Mutlu Müşteri</div></div>
-    <div class="num-box"><div class="num-val" data-count="98">0</div><div class="num-lbl">% Memnuniyet</div></div>
-  </div>
-</section>
-
-<div class="checker"></div>
-
-<!-- TIMELINE -->
-<section id="timeline">
-  <div class="sec-label rev" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px;"><span style="width:16px;height:2px;background:var(--red);display:inline-block;"></span>Tarihçemiz</div>
-  <h2 class="timeline-title rev">YOL HARİTAMIZ</h2>
-  <div class="timeline">
-    <div class="tl-item"><div class="tl-dot big">15</div><div class="tl-content"><div class="tl-year">2015</div><div class="tl-heading">Kuruluş — İstanbul</div><div class="tl-text">5 araç ve büyük bir hayalle Atatürk Havalimanı yakınlarında küçük bir ofiste başladık. İlk günden itibaren "premium hizmet, uygun fiyat" ilkemizden taviz vermedik.</div></div></div>
-    <div class="tl-item"><div class="tl-dot">17</div><div class="tl-content"><div class="tl-year">2017</div><div class="tl-heading">3 Şehre Genişleme</div><div class="tl-text">İstanbul'daki başarımızın ardından Ankara ve İzmir'e açıldık. Filomuz 40 araca ulaştı. İlk kurumsal müşterilerimizi kazandık.</div></div></div>
-    <div class="tl-item"><div class="tl-dot">19</div><div class="tl-content"><div class="tl-year">2019</div><div class="tl-heading">Dijital Dönüşüm</div><div class="tl-text">Anlık rezervasyon platformumuzu hayata geçirdik. 7/24 destek hattını kurduk. İlk mobil uygulamamızı yayınladık ve kullanıcı sayımız 50.000'i geçti.</div></div></div>
-    <div class="tl-item"><div class="tl-dot">21</div><div class="tl-content"><div class="tl-year">2021</div><div class="tl-heading">Elektrikli Filo</div><div class="tl-text">Tesla Model 3 ve Model Y araçlarıyla Türkiye'nin ilk premium elektrikli araç kiralama hizmetini başlattık. Yeşil mobilite vizyonumuzu hayata geçirdik.</div></div></div>
-    <div class="tl-item"><div class="tl-dot big">25</div><div class="tl-content"><div class="tl-year">2025</div><div class="tl-heading">48 Şehir — 250+ Araç</div><div class="tl-text">Bugün Türkiye'nin dört bir yanında hizmet veriyoruz. 500.000'den fazla mutlu müşteri, %98 memnuniyet oranı ve sürekli büyüyen bir filomuzla sektörün zirvesindeyiz.</div></div></div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section id="team" style="background:var(--surface);">
-  <div class="sec-label rev" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px;"><span style="width:16px;height:2px;background:var(--red);display:inline-block;"></span>Ekibimiz</div>
-  <h2 style="font-family:'Racing Sans One',cursive;font-size:clamp(32px,4vw,52px);margin-bottom:0;" class="rev">PİT DUVARI EKİBİ</h2>
-  <div class="team-grid">
-    <div class="team-card rev">
-      <div class="team-photo">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fit=crop" alt="CEO">
-        <div class="team-photo-overlay"></div>
-      </div>
-      <div class="team-info">
-        <div class="team-role">Kurucu & CEO</div>
-        <div class="team-name">Hamza Kahveci</div>
-        <div class="team-bio">10 yıllık otomotiv ve teknoloji deneyimiyle VELOX'u sıfırdan inşa etti. "Her yolculuk bir hikayedir" felsefesiyle hareket eder.</div>
-      </div>
+    <div class="s-field">
+      <div class="s-field-label">📅 İade Tarihi</div>
+      <input type="date" id="sTo">
     </div>
-    <div class="team-card rev">
-      <div class="team-photo">
-        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80&fit=crop" alt="COO">
-        <div class="team-photo-overlay"></div>
-      </div>
-      <div class="team-info">
-        <div class="team-role">Operasyon Direktörü</div>
-        <div class="team-name">Ayşe Demir</div>
-        <div class="team-bio">48 şehirdeki operasyonları ve 120 kişilik saha ekibini yönetiyor. Mükemmeliyetçi yapısıyla VELOX standartlarının mimarı.</div>
-      </div>
+    <div class="s-field">
+      <div class="s-field-label">🚗 Sınıf</div>
+      <select><option>Tümü</option><option>Ekonomi</option><option>SUV</option><option>Lüks</option><option>Elektrikli</option></select>
     </div>
-    <div class="team-card rev">
-      <div class="team-photo">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&fit=crop" alt="CTO">
-        <div class="team-photo-overlay"></div>
-      </div>
-      <div class="team-info">
-        <div class="team-role">Teknoloji Direktörü</div>
-        <div class="team-name">Mert Yılmaz</div>
-        <div class="team-bio">Anlık rezervasyon sistemi ve mobil platformun mimarı. Yapay zeka tabanlı filo yönetim sistemini geliştirdi.</div>
-      </div>
-    </div>
+    <button class="search-btn" onclick="doSearch()">
+      <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      ARA
+    </button>
   </div>
-</section>
-
-<!-- VALUES -->
-<section id="values" style="background:var(--bg2);">
-  <div class="sec-label rev" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px;"><span style="width:16px;height:2px;background:var(--red);display:inline-block;"></span>Değerlerimiz</div>
-  <h2 style="font-family:'Racing Sans One',cursive;font-size:clamp(32px,4vw,52px);margin-bottom:0;" class="rev">YARIŞÇI RUHU</h2>
-  <div class="values-grid">
-    <div class="val-card"><span class="val-icon">🏎️</span><div class="val-title">Hız & Verimlilik</div><div class="val-text">Rezervasyondan teslimata her adımda maksimum hız. Bekleme yok, bürokratik engel yok. Süreçleri sıfırdan tasarladık.</div></div>
-    <div class="val-card"><span class="val-icon">🛡️</span><div class="val-title">Güven & Şeffaflık</div><div class="val-text">Fiyatlarda sürpriz yok. Sözleşmede gizli madde yok. Her ücret, her kural müşterimize açık ve net şekilde sunulur.</div></div>
-    <div class="val-card"><span class="val-icon">⭐</span><div class="val-title">Mükemmellik Takıntısı</div><div class="val-text">Filomizdeki her araç teslimattan önce 47 nokta kontrolünden geçer. Standartlarımızın altında hiçbir araç müşterimize ulaşmaz.</div></div>
-    <div class="val-card"><span class="val-icon">🌱</span><div class="val-title">Sürdürülebilir Sürüş</div><div class="val-text">2030'a kadar filomuzun %40'ını elektrikli araçlara dönüştürme hedefimizle çevreye sorumlu bir mobilite anlayışını benimsiyoruz.</div></div>
-  </div>
-</section>
-
-<div class="checker"></div>
-
-<!-- CTA -->
-<div class="cta-banner">
-  <div>
-    <h2>Sizi Bekliyoruz</h2>
-    <p>250+ araç, 48 şehir. Yola çıkmak için bir tıklama yeter.</p>
-  </div>
-  <button class="btn-white" onclick="location.href='../index.html#booking'">🏁 Hemen Rezervasyon Yap</button>
 </div>
+
+<!-- CARS -->
+<section id="cars">
+  <div class="cars-header">
+    <div>
+      <div class="sec-eyebrow rev">Araç Filomuz</div>
+      <h2 class="sec-title rev">TÜM ARAÇLAR</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px;">
+      <div class="filter-tabs">
+        <button class="ftab on" onclick="filterCars('all',this)">Tümü</button>
+        <button class="ftab" onclick="filterCars('ekonomi',this)">Ekonomi</button>
+        <button class="ftab" onclick="filterCars('suv',this)">SUV</button>
+        <button class="ftab" onclick="filterCars('luks',this)">Lüks</button>
+        <button class="ftab" onclick="filterCars('elektrik',this)">Elektrik</button>
+      </div>
+      <div class="compare-hint">Karşılaştırmak için ⊕ simgesine tıklayın (maks 3)</div>
+    </div>
+  </div>
+  <div class="cars-grid" id="carsGrid">
+
+    <div class="car-card" data-cat="ekonomi" data-name="Toyota Corolla" data-price="850" data-make="Toyota" data-trans="Otomatik" data-fuel="Hibrit" data-seats="5" data-power="122 bg">
+      <div class="car-badge">⭐ Popüler</div>
+      <button class="car-cmp-btn" title="Karşılaştırmaya ekle" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=600&q=80&fit=crop" alt="Toyota Corolla">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">Ekonomi</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">Toyota</div><div class="car-name">Corolla</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚙️</span><span class="cspec-val">Otomatik</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">5 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">🌿</span><span class="cspec-val">Hibrit</span></div>
+          <div class="cspec"><span class="cspec-ico">❄️</span><span class="cspec-val">Klima</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺850</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-card" data-cat="suv" data-name="Toyota RAV4" data-price="1250" data-make="Toyota" data-trans="Otomatik" data-fuel="Hibrit" data-seats="5" data-power="218 bg">
+      <div class="car-badge b-new">Yeni Sezon</div>
+      <button class="car-cmp-btn" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1581540222194-0def2dda95b8?w=600&q=80&fit=crop" alt="Toyota RAV4">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">SUV</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">Toyota</div><div class="car-name">RAV4</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚙️</span><span class="cspec-val">Otomatik</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">5 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">🚀</span><span class="cspec-val">4x4</span></div>
+          <div class="cspec"><span class="cspec-ico">🌿</span><span class="cspec-val">Hibrit</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺1.250</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-card" data-cat="luks" data-name="Mercedes E-Class" data-price="2900" data-make="Mercedes-Benz" data-trans="Otomatik" data-fuel="Benzin" data-seats="5" data-power="258 bg">
+      <button class="car-cmp-btn" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&q=80&fit=crop" alt="Mercedes E-Class">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">Lüks</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">Mercedes-Benz</div><div class="car-name">E-Class</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚙️</span><span class="cspec-val">Otomatik</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">5 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">⭐</span><span class="cspec-val">Premium</span></div>
+          <div class="cspec"><span class="cspec-ico">🔊</span><span class="cspec-val">Hi-Fi</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺2.900</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-card" data-cat="luks" data-name="BMW 5 Serisi" data-price="3500" data-make="BMW" data-trans="Otomatik" data-fuel="Benzin" data-seats="5" data-power="286 bg">
+      <div class="car-badge" style="background:#e8001f;">🔥 Çok İstenen</div>
+      <button class="car-cmp-btn" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80&fit=crop" alt="BMW 5">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">Lüks</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">BMW</div><div class="car-name">5 Serisi</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚙️</span><span class="cspec-val">Otomatik</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">5 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">⭐</span><span class="cspec-val">M Sport</span></div>
+          <div class="cspec"><span class="cspec-ico">🏎️</span><span class="cspec-val">286 bg</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺3.500</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-card" data-cat="suv" data-name="Ford Explorer" data-price="1800" data-make="Ford" data-trans="Otomatik" data-fuel="Benzin" data-seats="7" data-power="300 bg">
+      <button class="car-cmp-btn" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=80&fit=crop" alt="Ford Explorer">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">SUV 7 Kişi</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">Ford</div><div class="car-name">Explorer</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚙️</span><span class="cspec-val">Otomatik</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">7 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">🚀</span><span class="cspec-val">AWD</span></div>
+          <div class="cspec"><span class="cspec-ico">📱</span><span class="cspec-val">Android</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺1.800</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-card" data-cat="ekonomi" data-name="Volkswagen Polo" data-price="650" data-make="Volkswagen" data-trans="Manuel" data-fuel="Dizel" data-seats="5" data-power="95 bg">
+      <div class="car-badge b-best">💰 En Uygun</div>
+      <button class="car-cmp-btn" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=600&q=80&fit=crop" alt="VW Polo">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">Ekonomi</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">Volkswagen</div><div class="car-name">Polo</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚙️</span><span class="cspec-val">Manuel</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">5 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">⛽</span><span class="cspec-val">Dizel</span></div>
+          <div class="cspec"><span class="cspec-ico">❄️</span><span class="cspec-val">Klima</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺650</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-card" data-cat="elektrik" data-name="Tesla Model 3" data-price="2200" data-make="Tesla" data-trans="Otomatik" data-fuel="Elektrik" data-seats="5" data-power="358 bg">
+      <div class="car-badge b-ev">⚡ Elektrik</div>
+      <button class="car-cmp-btn" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80&fit=crop" alt="Tesla Model 3">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">Elektrik</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">Tesla</div><div class="car-name">Model 3</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚡</span><span class="cspec-val">Elektrik</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">5 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">🔋</span><span class="cspec-val">500 km</span></div>
+          <div class="cspec"><span class="cspec-ico">📱</span><span class="cspec-val">Autopilot</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺2.200</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-card" data-cat="suv" data-name="Jeep Wrangler" data-price="2100" data-make="Jeep" data-trans="Otomatik" data-fuel="Benzin" data-seats="5" data-power="272 bg">
+      <button class="car-cmp-btn" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&q=80&fit=crop" alt="Jeep Wrangler">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">4x4 Off-Road</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">Jeep</div><div class="car-name">Wrangler</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚙️</span><span class="cspec-val">Otomatik</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">5 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">🏔️</span><span class="cspec-val">Off-Road</span></div>
+          <div class="cspec"><span class="cspec-ico">🚀</span><span class="cspec-val">4WD</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺2.100</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-card" data-cat="luks" data-name="Audi A6" data-price="3200" data-make="Audi" data-trans="Otomatik" data-fuel="Dizel" data-seats="5" data-power="245 bg">
+      <button class="car-cmp-btn" onclick="toggleCmp(this)">⊕</button>
+      <div class="car-photo">
+        <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80&fit=crop" alt="Audi A6">
+        <div class="car-photo-tint"></div><div class="car-cat-tag">Lüks</div>
+      </div>
+      <div class="car-body">
+        <div class="car-make">Audi</div><div class="car-name">A6</div>
+        <div class="car-specs">
+          <div class="cspec"><span class="cspec-ico">⚙️</span><span class="cspec-val">Otomatik</span></div>
+          <div class="cspec"><span class="cspec-ico">👥</span><span class="cspec-val">5 Kişi</span></div>
+          <div class="cspec"><span class="cspec-ico">⭐</span><span class="cspec-val">Quattro</span></div>
+          <div class="cspec"><span class="cspec-ico">🎵</span><span class="cspec-val">B&O</span></div>
+        </div>
+        <div class="car-foot">
+          <div><div class="car-price-num">₺3.200</div><div class="car-price-label">/ günlük</div></div>
+          <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPARE BAR -->
+<div class="cmp-bar" id="cmpBar">
+  <div class="cmp-slots" id="cmpSlots">
+    <div class="cmp-slot" id="cslot0">Araç 1</div>
+    <div class="cmp-slot" id="cslot1">Araç 2</div>
+    <div class="cmp-slot" id="cslot2">Araç 3</div>
+  </div>
+  <div class="cmp-bar-actions">
+    <button class="btn-red" style="clip-path:none;padding:12px 28px;" onclick="openCmpModal()">⚖ Karşılaştır</button>
+    <button class="btn-back" onclick="clearCmp()">✕ Temizle</button>
+  </div>
+</div>
+
+<div class="checker-row alt"></div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="sec-eyebrow rev">Farkımız</div>
+  <h2 class="sec-title rev">NEDEN VELOX?</h2>
+  <div class="feat-grid">
+    <div class="feat-list">
+      <div class="feat-row"><div class="feat-num">01</div><div class="feat-content"><div class="feat-title">Anlık Onay — Sıfır Bekleme</div><div class="feat-desc">Rezervasyonunuz saniyeler içinde onaylanır. Evrak, kuyruk, gecikme yok.</div></div></div>
+      <div class="feat-row"><div class="feat-num">02</div><div class="feat-content"><div class="feat-title">Tam Kasko & Mini Hasar Güvencesi</div><div class="feat-desc">Tüm araçlar full kasko ile gelir. Sürpriz ücret yok, ekstra kaygı yok.</div></div></div>
+      <div class="feat-row"><div class="feat-num">03</div><div class="feat-content"><div class="feat-title">Havalimanı Kapıya Teslimat</div><div class="feat-desc">16 havalimanında araç sizi kapıda bekler. İstanbul, Ankara, İzmir, Antalya.</div></div></div>
+      <div class="feat-row"><div class="feat-num">04</div><div class="feat-content"><div class="feat-title">7/24 Türkçe Destek</div><div class="feat-desc">Gece 3'te de yanınızdayız. Telefon, WhatsApp, canlı chat — anında Türkçe.</div></div></div>
+    </div>
+    <div class="feat-visual-wrap">
+      <div class="feat-bg-img">
+        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=700&q=80&fit=crop" alt="">
+      </div>
+      <div class="feat-overlay-text">
+        <div class="feat-big-num">98</div>
+        <div class="feat-big-label">% Müşteri Memnuniyeti</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="checker-row"></div>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="sec-eyebrow rev">Rezervasyon</div>
+  <h2 class="sec-title rev">KİRALAMA FORMU</h2>
+  <p class="sec-desc rev">4 adımda tamamlanır. Hızlı, güvenli, stressiz.</p>
+  <div class="booking-wrap rev">
+    <div class="prog-strip">
+      <div class="prog-item cur" id="pi1"><div class="prog-circle">1</div><div><div class="prog-step-label">Adım 1</div><div class="prog-step-title">Kişisel Bilgi</div></div></div>
+      <div class="prog-item" id="pi2"><div class="prog-circle">2</div><div><div class="prog-step-label">Adım 2</div><div class="prog-step-title">Araç & Tarih</div></div></div>
+      <div class="prog-item" id="pi3"><div class="prog-circle">3</div><div><div class="prog-step-label">Adım 3</div><div class="prog-step-title">Ekstralar</div></div></div>
+      <div class="prog-item" id="pi4"><div class="prog-circle">4</div><div><div class="prog-step-label">Adım 4</div><div class="prog-step-title">Ödeme</div></div></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="f-page on" id="fp1">
+      <div class="f-page-title">Kişisel Bilgiler</div>
+      <div class="f-page-sub">Rezervasyon için gerekli bilgileri girin.</div>
+      <div class="f-row">
+        <div class="f-group" id="fg-fn"><label>Ad *</label><input type="text" id="f-fn" placeholder="Ahmet"><span class="err-txt">Zorunlu alan.</span></div>
+        <div class="f-group" id="fg-ln"><label>Soyad *</label><input type="text" id="f-ln" placeholder="Yılmaz"><span class="err-txt">Zorunlu alan.</span></div>
+      </div>
+      <div class="f-row">
+        <div class="f-group" id="fg-em"><label>E-posta *</label><input type="email" id="f-em" placeholder="ahmet@email.com"><span class="err-txt">Geçerli e-posta girin.</span></div>
+        <div class="f-group" id="fg-ph"><label>Telefon *</label><input type="tel" id="f-ph" placeholder="+90 555 000 00 00"><span class="err-txt">Zorunlu alan.</span></div>
+      </div>
+      <div class="f-row">
+        <div class="f-group"><label>TC Kimlik No</label><input type="text" placeholder="12345678901" maxlength="11"></div>
+        <div class="f-group"><label>Ehliyet No</label><input type="text" placeholder="123456789"></div>
+      </div>
+      <div class="f-row full"><div class="f-group"><label>Adres</label><textarea placeholder="Mahalle, cadde, bina no..."></textarea></div></div>
+      <div class="f-nav">
+        <div class="f-nav-left"><span class="f-step-ind">1 / 4</span></div>
+        <button class="btn-next" onclick="goStep(2)">Devam Et →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="f-page" id="fp2">
+      <div class="f-page-title">Araç & Tarih</div>
+      <div class="f-page-sub">Kiralama detaylarını belirleyin.</div>
+      <div class="f-row">
+        <div class="f-group"><label>Araç Kategorisi</label>
+          <select id="f-cat" onchange="updateModels()">
+            <option value="ekonomi">Ekonomi</option>
+            <option value="suv">SUV & Crossover</option>
+            <option value="luks">Lüks & Premium</option>
+            <option value="elektrik">Elektrikli</option>
+          </select>
+        </div>
+        <div class="f-group"><label>Araç Modeli</label><select id="f-model" onchange="updateLivePrice()"></select></div>
+      </div>
+      <div class="f-row">
+        <div class="f-group" id="fg-pu"><label>📅 Teslim Tarihi *</label><input type="date" id="f-pu" onchange="updateLivePrice()"><span class="err-txt">Tarih seçin.</span></div>
+        <div class="f-group" id="fg-re"><label>📅 İade Tarihi *</label><input type="date" id="f-re" onchange="updateLivePrice()"><span class="err-txt">İade tarihi sonra olmalıdır.</span></div>
+      </div>
+      <div class="live-price" id="livePrice">
+        <div>
+          <div class="lp-label">Tahmini Tutar</div>
+          <div class="lp-days" id="lpDays">3 gün × ₺850</div>
+        </div>
+        <div class="lp-amount" id="lpAmount">₺2.550</div>
+      </div>
+      <div class="f-row">
+        <div class="f-group"><label>Teslim Noktası</label><select><option>İstanbul Havalimanı</option><option>Sabiha Gökçen</option><option>Ankara Esenboğa</option><option>Adresinize (+₺150)</option></select></div>
+        <div class="f-group"><label>İade Noktası</label><select><option>Aynı Nokta</option><option>Farklı Nokta (+₺200)</option></select></div>
+      </div>
+      <div class="f-row full"><div class="f-group"><label>Özel İstek</label><textarea placeholder="Bebek koltuğu, renk tercihi..."></textarea></div></div>
+      <div class="f-nav">
+        <div class="f-nav-left"><button class="btn-back" onclick="goStep(1)">← Geri</button><span class="f-step-ind">2 / 4</span></div>
+        <button class="btn-next" onclick="goStep(3)">Devam Et →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="f-page" id="fp3">
+      <div class="f-page-title">Ekstra Hizmetler</div>
+      <div class="f-page-sub">Seyahatinizi kişiselleştirin.</div>
+      <div class="extras-grid">
+        <div class="extra" onclick="toggleExtra(this)" data-price="150"><div class="extra-check">✓</div><div class="extra-info"><div class="extra-name">🛡️ Tam Kasko Upgrade</div><div class="extra-desc">Mini hasar dahil tam koruma</div></div><div class="extra-price">+₺150</div></div>
+        <div class="extra" onclick="toggleExtra(this)" data-price="80"><div class="extra-check">✓</div><div class="extra-info"><div class="extra-name">👶 Bebek Koltuğu</div><div class="extra-desc">0–13 kg güvenlik koltuğu</div></div><div class="extra-price">+₺80</div></div>
+        <div class="extra" onclick="toggleExtra(this)" data-price="60"><div class="extra-check">✓</div><div class="extra-info"><div class="extra-name">🗺️ Navigasyon</div><div class="extra-desc">Güncel Türkiye haritası</div></div><div class="extra-price">+₺60</div></div>
+        <div class="extra" onclick="toggleExtra(this)" data-price="200"><div class="extra-check">✓</div><div class="extra-info"><div class="extra-name">⛽ Dolu Depo</div><div class="extra-desc">Araç dolu depo ile gelir</div></div><div class="extra-price">+₺200</div></div>
+        <div class="extra" onclick="toggleExtra(this)" data-price="120"><div class="extra-check">✓</div><div class="extra-info"><div class="extra-name">📶 4G İnternet</div><div class="extra-desc">Sınırsız mobil veri</div></div><div class="extra-price">+₺120</div></div>
+        <div class="extra" onclick="toggleExtra(this)" data-price="100"><div class="extra-check">✓</div><div class="extra-info"><div class="extra-name">👤 2. Sürücü</div><div class="extra-desc">Ek ehliyet kaydı</div></div><div class="extra-price">+₺100</div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--red);">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);">Ekstralar Toplamı</span>
+        <span style="font-family:'Racing Sans One',cursive;font-size:28px;color:var(--red);" id="extras-total">₺0</span>
+      </div>
+      <div class="f-nav">
+        <div class="f-nav-left"><button class="btn-back" onclick="goStep(2)">← Geri</button><span class="f-step-ind">3 / 4</span></div>
+        <button class="btn-next" onclick="goStep(4)">Devam Et →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="f-page" id="fp4">
+      <div class="f-page-title">Özet & Ödeme</div>
+      <div class="f-page-sub">Kontrol edin ve onaylayın.</div>
+      <div class="pay-grid">
+        <div>
+          <div class="sum-box">
+            <div class="sum-header">Rezervasyon Özeti</div>
+            <div class="sum-row"><span class="lbl">Araç</span><span class="val" id="sum-car">—</span></div>
+            <div class="sum-row"><span class="lbl">Süre</span><span class="val" id="sum-days">—</span></div>
+            <div class="sum-row"><span class="lbl">Günlük Ücret</span><span class="val" id="sum-daily">—</span></div>
+            <div class="sum-row"><span class="lbl">Ekstralar</span><span class="val" id="sum-extras">₺0</span></div>
+            <div class="sum-row"><span class="lbl">KDV %20</span><span class="val" id="sum-tax">—</span></div>
+            <div class="sum-total-row"><span>Toplam</span><span class="sum-total-amount" id="sum-total">—</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="cc-card">
+            <div class="cc-chip"></div>
+            <div class="cc-num" id="cc-num-d">•••• •••• •••• ••••</div>
+            <div class="cc-bottom">
+              <div><div class="cc-name-disp" id="cc-name-d">AD SOYAD</div></div>
+              <div><div class="cc-exp-disp" id="cc-exp-d">MM/YY</div><div class="cc-brand">VISA</div></div>
+            </div>
+          </div>
+          <div class="f-row full" style="margin-bottom:12px;">
+            <div class="f-group" id="fg-ccn"><label>Kart Numarası *</label><input type="text" id="f-ccn" placeholder="0000 0000 0000 0000" maxlength="19" oninput="fmtCard(this)"><span class="err-txt">Geçerli kart girin.</span></div>
+          </div>
+          <div class="f-row full" style="margin-bottom:12px;">
+            <div class="f-group"><label>Kart Sahibi</label><input type="text" id="f-ccname" placeholder="AD SOYAD" oninput="document.getElementById('cc-name-d').textContent=this.value.toUpperCase()||'AD SOYAD'"></div>
+          </div>
+          <div class="f-row">
+            <div class="f-group"><label>Son Kullanma</label><input type="text" id="f-ccexp" placeholder="MM/YY" maxlength="5" oninput="fmtExp(this)"></div>
+            <div class="f-group"><label>CVV</label><input type="password" placeholder="•••" maxlength="3"></div>
+          </div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:1px;color:var(--text-muted);display:flex;align-items:center;gap:8px;margin-top:12px;padding:10px 12px;background:var(--red-dim);border:1px solid rgba(232,0,31,0.2);">
+            🔒 256-bit SSL ile şifreli iletim
+          </div>
+        </div>
+      </div>
+      <div class="f-nav">
+        <div class="f-nav-left"><button class="btn-back" onclick="goStep(3)">← Geri</button><span class="f-step-ind">4 / 4</span></div>
+        <button class="btn-next" style="background:#e8001f;padding:12px 44px;" onclick="submitForm()">🏁 Rezervasyonu Onayla</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="f-page" id="fp-ok">
+      <div class="success-wrap">
+        <div class="success-flag"><div class="success-flag-inner" id="successFlag"></div></div>
+        <div class="success-title">REZERVASYON TAMAM!</div>
+        <p class="success-desc">Rezervasyonunuz alındı. Onay e-postası gönderildi.</p>
+        <div class="res-code-box"><span id="res-code">VLX-2025-0000</span></div>
+        <button class="btn-red" style="clip-path:none;" onclick="resetForm()">Yeni Rezervasyon</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="sec-eyebrow rev">Müşteri Yorumları</div>
+  <h2 class="sec-title rev">NE DİYORLAR?</h2>
+  <div class="t-grid">
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">"Havalimanı çıkışında araç hemen hazırdı. Kasko dahil olduğu için hiç stres yaşamadım."</p><div class="t-author"><div class="t-ava">AY</div><div><div class="t-name">Ayşe Yıldız</div><div class="t-city">İstanbul · 14 kiralama</div></div></div></div>
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">"BMW 5 Serisi ile iş seyahatim mükemmeldi. Araç tertemiz, her şey çalışıyor. Çok memnunum."</p><div class="t-author"><div class="t-ava">MK</div><div><div class="t-name">Mehmet Kaya</div><div class="t-city">Ankara · 8 kiralama</div></div></div></div>
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">"Tesla Model 3 kiraladım, elektrikli araç deneyimim bu kadar keyifli olmamıştı. Şarj rehberliği de harika."</p><div class="t-author"><div class="t-ava">EÖ</div><div><div class="t-name">Emre Öztürk</div><div class="t-city">İzmir · 22 kiralama</div></div></div></div>
+    <div class="t-card"><div class="t-stars">★★★★☆</div><p class="t-text">"Explorer ile 7 kişilik aile tatilimiz harikaydı. Büyük araç, harika konfor, kesinlikle öneririm."</p><div class="t-author"><div class="t-ava">SÇ</div><div><div class="t-name">Sevgi Çelik</div><div class="t-city">Antalya · 5 kiralama</div></div></div></div>
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">"Gece 2'de arıza — 15 dakikada yardım aracı geldi. Bu kadar hızlı servis görmedim hayatımda."</p><div class="t-author"><div class="t-ava">CY</div><div><div class="t-name">Can Yılmaz</div><div class="t-city">Bursa · 11 kiralama</div></div></div></div>
+    <div class="t-card"><div class="t-stars">★★★★★</div><p class="t-text">"İş seyahatlerimde artık sadece VELOX. Audi A6 ile hem konforlu hem prestijli bir deneyim yaşıyorum."</p><div class="t-author"><div class="t-ava">BT</div><div><div class="t-name">Burak Taş</div><div class="t-city">İzmir · 31 kiralama</div></div></div></div>
+  </div>
+</section>
+
+<div class="checker-row alt"></div>
+
+<!-- CITIES -->
+<section id="cities">
+  <div class="sec-eyebrow rev">Hizmet Bölgeleri</div>
+  <h2 class="sec-title rev">48 ŞEHİRDE HİZMET</h2>
+  <div class="cities-grid rev">
+    <div class="city-card"><img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=500&q=80&fit=crop" alt="İstanbul"><div class="city-overlay"><div class="city-name">İstanbul</div><div class="city-count">82 Araç Mevcut</div></div></div>
+    <div class="city-card"><img src="https://images.unsplash.com/photo-1589758438368-0ad531db3366?w=500&q=80&fit=crop" alt="Ankara"><div class="city-overlay"><div class="city-name">Ankara</div><div class="city-count">48 Araç Mevcut</div></div></div>
+    <div class="city-card"><img src="https://images.unsplash.com/photo-1524849698-5e0b18bc7a3e?w=500&q=80&fit=crop" alt="İzmir"><div class="city-overlay"><div class="city-name">İzmir</div><div class="city-count">36 Araç Mevcut</div></div></div>
+    <div class="city-card"><img src="https://images.unsplash.com/photo-1570939274717-7eda259b50ed?w=500&q=80&fit=crop" alt="Antalya"><div class="city-overlay"><div class="city-name">Antalya</div><div class="city-count">54 Araç Mevcut</div></div></div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-bottom">
-    <span class="footer-logo">VEL<em>O</em>X</span>
-    <span>© 2025 VELOX Araç Kiralama A.Ş.</span>
-    <div class="footer-links">
-      <a href="about.html">Hakkımızda</a>
-      <a href="projects.html">Projeler</a>
-      <a href="contact.html">İletişim</a>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">VEL<em>O</em>X</span>
+      <p class="footer-about">Türkiye'nin en güvenilir araç kiralama platformu. 2015'ten bu yana 500.000+ müşteriye hizmet veriyoruz.</p>
     </div>
+    <div class="footer-col"><h5>Araçlar</h5><ul><li><a href="#">Ekonomi Sınıfı</a></li><li><a href="#">SUV & Crossover</a></li><li><a href="#">Lüks & Premium</a></li><li><a href="#">Elektrikli</a></li></ul></div>
+    <div class="footer-col"><h5>Şirket</h5><ul><li><a href="#">Hakkımızda</a></li><li><a href="#">Kariyer</a></li><li><a href="#">Basın</a></li><li><a href="#">Blog</a></li></ul></div>
+    <div class="footer-col"><h5>İletişim</h5><ul><li><a href="#">0850 888 55 55</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="c9a0a7afa689bfaca5a6b1e7aaa6a4e7bdbb">[email&#160;protected]</span></a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Canlı Destek</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 VELOX Araç Kiralama A.Ş.</span>
+    <div class="footer-links"><a href="#">Gizlilik</a><a href="#">Kullanım Koşulları</a><a href="#">KVKK</a></div>
   </div>
 </footer>
 
+<!-- CAR MODAL -->
+<div class="car-modal-bg" id="carModalBg" onclick="carModalOut(event)">
+  <div class="car-modal">
+    <div class="car-modal-head"><div class="car-modal-title">ARAÇ DETAYI</div><button class="modal-close" onclick="closeCarModal()">×</button></div>
+    <div class="car-modal-body">
+      <div class="modal-car-strip">
+        <img class="modal-car-img" id="m-img" src="" alt="">
+        <div class="modal-car-info">
+          <div class="modal-car-make" id="m-make"></div>
+          <div class="modal-car-model" id="m-model"></div>
+          <div class="modal-car-price" id="m-price"></div>
+          <div class="modal-car-per">/ günlük · KDV hariç</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--text-dim);line-height:1.65;margin-bottom:20px;">Bu araç için rezervasyon formu doldurabilir veya karşılaştırmaya ekleyebilirsiniz.</p>
+      <div class="modal-btns">
+        <button class="btn-red" style="flex:1;clip-path:none;" onclick="goToBooking()">🏁 Rezervasyon Yap</button>
+        <button class="btn-outline" onclick="closeCarModal()">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="cmp-modal-bg" id="cmpModalBg" onclick="cmpModalOut(event)">
+  <div class="cmp-modal">
+    <div class="cmp-modal-head">
+      <div class="cmp-modal-title">ARAÇ KARŞILAŞTIRMA</div>
+      <button class="modal-close" onclick="closeCmpModal()">×</button>
+    </div>
+    <div style="padding:24px;overflow-x:auto;">
+      <table class="cmp-table" id="cmpTable"></table>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-ico" id="t-ico">✓</span>
+  <span id="t-msg">İşlem başarılı</span>
+  <div class="toast-prog"
+  id="t-prog"></div>
+</div>
+
 <script>
-// Cursor
-const cur=document.getElementById('cursor'),cross=document.getElementById('cursorCross');
-let mx=0,my=0,cx=0,cy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function loop(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cross.style.left=cx+'px';cross.style.top=cy+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button,.team-card,.val-card,.num-box').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cur.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));
-});
-// Scroll
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('sc',scrollY>50);
-  document.getElementById('prog-fill').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
-});
-// Theme
-document.getElementById('themeBtn').addEventListener('click',()=>{
-  const h=document.documentElement;
-  h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';
-  document.getElementById('themeInd').textContent=h.dataset.theme==='dark'?'DARK':'LIGHT';
-});
-// Counter
-function animCount(el){
-  const t=+el.dataset.count,dur=2000;let s=null;
-  (function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/dur,1);const e=p<.5?2*p*p:-1+(4-2*p)*p;
-  el.textContent=Math.floor(e*t).toLocaleString('tr-TR');if(p<1)requestAnimationFrame(step);else el.textContent=t.toLocaleString('tr-TR');})(performance.now());
+/* ═══ LOADER ═══ */
+// Build checkerboard
+const lf = document.getElementById('loaderFlag');
+for(let i=0;i<16;i++){const c=document.createElement('div');c.style.cssText=`width:22px;height:22px;background:${(Math.floor(i/4)+i)%2===0?'#fff':'#111'}`;lf.appendChild(c);}
+
+const loaderTxt = document.getElementById('loaderTxt');
+let lp = 0;
+const li = setInterval(()=>{
+  lp = Math.min(lp + Math.random()*14, 99);
+  loaderTxt.textContent = `${Math.floor(lp)}% Yükleniyor...`;
+}, 120);
+function closeLoader(){
+  clearInterval(li);
+  if(loaderTxt) loaderTxt.textContent = '100% Hazır';
+  setTimeout(function(){ var l=document.getElementById('loader'); if(l) l.classList.add('out'); }, 400);
 }
-// IO
-const io=new IntersectionObserver(ents=>{
-  ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');if(e.target.dataset.count)animCount(e.target);}});
+window.addEventListener('load', closeLoader);
+setTimeout(closeLoader, 4000);
+
+// Build success flag
+const sf = document.getElementById('successFlag');
+for(let i=0;i<18;i++){const c=document.createElement('div');c.className='sf-cell';sf.appendChild(c);}
+
+/* ═══ SPEED LINES ═══ */
+const sl = document.getElementById('speedLines');
+for(let i=0;i<8;i++){
+  const line = document.createElement('div');
+  line.className = 'speed-line';
+  const top = 20 + Math.random() * 60;
+  const delay = Math.random() * 5;
+  const dur = 2 + Math.random() * 3;
+  const width = 80 + Math.random() * 200;
+  line.style.cssText = `top:${top}%;width:${width}px;animation-delay:${delay}s;animation-duration:${dur}s;left:${Math.random()*40}%`;
+  sl.appendChild(line);
+}
+
+/* ═══ THEME ═══ */
+const themeBtn = document.getElementById('themeBtn');
+const themeInd = document.getElementById('themeInd');
+themeBtn.addEventListener('click',()=>{
+  const html = document.documentElement;
+  const isDark = html.dataset.theme === 'dark';
+  html.dataset.theme = isDark ? 'light' : 'dark';
+  themeInd.textContent = isDark ? 'LIGHT' : 'DARK';
+  toast(isDark ? '☀️ Açık tema aktif' : '🌑 Koyu tema aktif', isDark ? '☀️' : '🌑');
+});
+
+/* ═══ CURSOR ═══ */
+const cur = document.getElementById('cursor');
+const cross = document.getElementById('cursorCross');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+});
+document.addEventListener('mousedown',()=>cur.style.transform='translate(-50%,-50%) scale(0.4)');
+document.addEventListener('mouseup',()=>cur.style.transform='translate(-50%,-50%) scale(1)');
+(function loop(){
+  cx+=(mx-cx)*.12; cy+=(my-cy)*.12;
+  cross.style.left=cx+'px'; cross.style.top=cy+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button,.car-card,.extra,.ftab,.city-card,.t-card,.theme-btn,.cmp-nav-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('hover');cross.classList.add('hover');});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');cross.classList.remove('hover');});
+});
+
+/* ═══ SCROLL ═══ */
+window.addEventListener('scroll',()=>{
+  const sy = scrollY;
+  document.getElementById('navbar').classList.toggle('scrolled', sy > 50);
+  document.getElementById('btt').classList.toggle('show', sy > 400);
+  const pct = sy / (document.documentElement.scrollHeight - innerHeight) * 100;
+  document.getElementById('prog-fill').style.width = pct + '%';
+});
+
+/* ═══ SMOOTH ═══ */
+function smoothTo(id){ document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); }
+
+/* ═══ COUNTER ═══ */
+function animCount(el){
+  const t=+el.dataset.count, dur=2000; let s=null;
+  (function step(ts){
+    if(!s) s=ts;
+    const p = Math.min((ts-s)/dur,1);
+    const e = p<.5?2*p*p:-1+(4-2*p)*p;
+    el.textContent = Math.floor(e*t);
+    if(p<1) requestAnimationFrame(step); else el.textContent=t;
+  })(performance.now());
+}
+
+/* ═══ INTERSECTION ═══ */
+const io = new IntersectionObserver(ents=>{
+  ents.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      if(e.target.dataset.count) animCount(e.target);
+    }
+  });
 },{threshold:.1});
-document.querySelectorAll('.rev,.tl-item,.val-card,[data-count]').forEach(el=>io.observe(el));
-document.querySelectorAll('.tl-item').forEach((el,i)=>el.style.transitionDelay=(i*.12)+'s');
-document.querySelectorAll('.val-card').forEach((el,i)=>el.style.transitionDelay=(i*.1)+'s');
+document.querySelectorAll('.rev,.car-card,.feat-row,[data-count]').forEach(el=>io.observe(el));
+document.querySelectorAll('.car-card').forEach((c,i)=>c.style.transitionDelay=(i*.07)+'s');
+document.querySelectorAll('.feat-row').forEach((c,i)=>c.style.transitionDelay=(i*.1)+'s');
+
+/* ═══ FILTER ═══ */
+function filterCars(cat,btn){
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.car-card').forEach((card,i)=>{
+    const show = cat==='all' || card.dataset.cat===cat;
+    if(show){
+      card.style.display='';
+      card.style.transitionDelay=(i*.05)+'s';
+      requestAnimationFrame(()=>{card.style.opacity='1';card.style.transform='translateY(0)';});
+    } else {
+      card.style.opacity='0'; card.style.transform='translateY(20px)';
+      setTimeout(()=>card.style.display='none', 280);
+    }
+  });
+}
+
+/* ═══ SEARCH ═══ */
+function doSearch(){
+  const f=document.getElementById('sFrom').value, t=document.getElementById('sTo').value;
+  if(!f||!t){toast('Lütfen tarih seçin','📅');return;}
+  if(new Date(t)<=new Date(f)){toast('İade tarihi teslimden sonra olmalı','⚠️');return;}
+  toast('Araçlar listeleniyor...','🔍'); smoothTo('cars');
+}
+
+/* ═══ COMPARE ═══ */
+let cmpList = [];
+function toggleCmp(btn){
+  const card = btn.closest('.car-card');
+  const name = card.dataset.name;
+  const idx = cmpList.findIndex(c=>c.name===name);
+  if(idx>-1){
+    cmpList.splice(idx,1);
+    btn.classList.remove('active'); btn.textContent='⊕';
+    toast(name+' çıkarıldı','✕');
+  } else {
+    if(cmpList.length>=3){toast('Maks. 3 araç karşılaştırılabilir','⚠️');return;}
+    cmpList.push({
+      name:card.dataset.name, make:card.dataset.make,
+      price:card.dataset.price, trans:card.dataset.trans,
+      fuel:card.dataset.fuel, seats:card.dataset.seats,
+      power:card.dataset.power,
+      img:card.querySelector('.car-photo img').src,
+    });
+    btn.classList.add('active'); btn.textContent='✓';
+    toast(name+' eklendi','⊕');
+  }
+  updateCmpBar();
+}
+function updateCmpBar(){
+  const bar=document.getElementById('cmpBar');
+  const nb=document.getElementById('cmpNavBtn');
+  const nc=document.getElementById('cmpCount');
+  const n=cmpList.length;
+  bar.classList.toggle('show',n>0);
+  nb.classList.toggle('show',n>0);
+  nc.textContent=n;
+  for(let i=0;i<3;i++){
+    const s=document.getElementById('cslot'+i);
+    if(cmpList[i]){
+      s.className='cmp-slot filled';
+      s.innerHTML=`<button class="cmp-slot-x" onclick="removeCmp(${i})">×</button>${cmpList[i].name}`;
+    } else {
+      s.className='cmp-slot'; s.textContent='Araç '+(i+1);
+    }
+  }
+}
+function removeCmp(idx){
+  const name=cmpList[idx].name;
+  document.querySelectorAll('.car-card').forEach(c=>{
+    if(c.dataset.name===name){
+      const b=c.querySelector('.car-cmp-btn');
+      b.classList.remove('active'); b.textContent='⊕';
+    }
+  });
+  cmpList.splice(idx,1); updateCmpBar();
+}
+function clearCmp(){
+  cmpList=[];
+  document.querySelectorAll('.car-cmp-btn').forEach(b=>{b.classList.remove('active');b.textContent='⊕';});
+  updateCmpBar();
+}
+function openCmpModal(){
+  if(cmpList.length<2){toast('En az 2 araç seçin','⚠️');return;}
+  const prices=cmpList.map(c=>+c.price);
+  const minPrice=Math.min(...prices);
+  const rows=[['Kategori/Tür','cat'],['Vites','trans'],['Yakıt','fuel'],['Koltuk','seats'],['Motor Gücü','power'],['Günlük Fiyat','price']];
+  let html='<thead><tr><th style="width:130px;background:var(--bg2);"></th>';
+  cmpList.forEach(c=>{
+    html+=`<th><img src="${c.img}" class="cmp-car-img" alt="${c.name}"><div style="font-family:Barlow Condensed,sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:3px;">${c.make}</div><div>${c.name}</div></th>`;
+  });
+  html+='</tr></thead><tbody>';
+  rows.forEach(([label,key])=>{
+    html+=`<tr><td class="row-label">${label}</td>`;
+    cmpList.forEach(c=>{
+      let v = c[key]||'—', cls='';
+      if(key==='price'){
+        cls = +c.price===minPrice ? 'win' : '';
+        v = `<div class="cmp-price-big">₺${Number(c.price).toLocaleString('tr-TR')}</div><div style="font-size:10px;color:var(--text-muted);">/gün</div>`;
+      }
+      html+=`<td class="${cls}">${v}</td>`;
+    });
+    html+='</tr>';
+  });
+  html+='</tbody>';
+  document.getElementById('cmpTable').innerHTML=html;
+  document.getElementById('cmpModalBg').classList.add('open');
+}
+function closeCmpModal(){document.getElementById('cmpModalBg').classList.remove('open');}
+function cmpModalOut(e){if(e.target===document.getElementById('cmpModalBg'))closeCmpModal();}
+
+/* ═══ MODELS ═══ */
+const modelsData={
+  ekonomi:[{name:'Toyota Corolla',price:850},{name:'Volkswagen Polo',price:650},{name:'Honda Civic',price:780}],
+  suv:[{name:'Toyota RAV4',price:1250},{name:'Ford Explorer',price:1800},{name:'Jeep Wrangler',price:2100}],
+  luks:[{name:'Mercedes E-Class',price:2900},{name:'BMW 5 Serisi',price:3500},{name:'Audi A6',price:3200}],
+  elektrik:[{name:'Tesla Model 3',price:2200},{name:'Tesla Model Y',price:2600}]
+};
+function updateModels(){
+  const cat=document.getElementById('f-cat').value;
+  document.getElementById('f-model').innerHTML=modelsData[cat].map(m=>`<option value="${m.price}">${m.name} — ₺${m.price.toLocaleString('tr-TR')}/gün</option>`).join('');
+  updateLivePrice();
+}
+function updateLivePrice(){
+  const daily=+document.getElementById('f-model').value||850;
+  const pu=document.getElementById('f-pu').value, re=document.getElementById('f-re').value;
+  const days=(pu&&re&&new Date(re)>new Date(pu))?Math.round((new Date(re)-new Date(pu))/86400000):3;
+  const total=daily*days;
+  document.getElementById('lpDays').textContent=`${days} gün × ₺${daily.toLocaleString('tr-TR')}`;
+  document.getElementById('lpAmount').textContent=`₺${total.toLocaleString('tr-TR')}`;
+  const lp=document.getElementById('livePrice');
+  lp.classList.add('flash'); setTimeout(()=>lp.classList.remove('flash'),500);
+}
+updateModels();
+
+/* ═══ EXTRAS ═══ */
+function toggleExtra(el){
+  el.classList.toggle('on');
+  const tot=[...document.querySelectorAll('.extra.on')].reduce((s,e)=>s+(+e.dataset.price||0),0);
+  document.getElementById('extras-total').textContent='₺'+tot.toLocaleString('tr-TR');
+}
+
+/* ═══ MULTI-STEP ═══ */
+let curStep=1;
+function goStep(n){
+  if(n>curStep&&!validateStep(curStep)) return;
+  const map={1:'fp1',2:'fp2',3:'fp3',4:'fp4'};
+  if(map[curStep]) document.getElementById(map[curStep]).classList.remove('on');
+  curStep=n;
+  if(map[curStep]) document.getElementById(map[curStep]).classList.add('on');
+  updateProg();
+  if(n===4) calcSum();
+  smoothTo('booking');
+}
+function validateStep(s){
+  let ok=true;
+  if(s===1){
+    [['fg-fn','f-fn',v=>v.trim().length>1],['fg-ln','f-ln',v=>v.trim().length>1],
+     ['fg-em','f-em',v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],['fg-ph','f-ph',v=>v.trim().length>6]]
+    .forEach(([g,f,t])=>{
+      const fg=document.getElementById(g), fv=document.getElementById(f).value;
+      if(!t(fv)){fg.classList.add('err');ok=false;}else fg.classList.remove('err');
+    });
+  }
+  if(s===2){
+    const p=document.getElementById('f-pu').value, r=document.getElementById('f-re').value;
+    const fp=document.getElementById('fg-pu'), fr=document.getElementById('fg-re');
+    fp.classList.remove('err'); fr.classList.remove('err');
+    if(!p){fp.classList.add('err');ok=false;}
+    if(!r||new Date(r)<=new Date(p)){fr.classList.add('err');ok=false;}
+  }
+  if(!ok) toast('İşaretli alanları düzeltin','⚠️');
+  return ok;
+}
+function updateProg(){
+  for(let i=1;i<=4;i++){
+    const pi=document.getElementById('pi'+i);
+    pi.classList.remove('cur','done');
+    const pc=pi.querySelector('.prog-circle');
+    if(i<curStep){pi.classList.add('done');pc.textContent='✓';}
+    else if(i===curStep){pi.classList.add('cur');pc.textContent=i;}
+    else pc.textContent=i;
+  }
+}
+function calcSum(){
+  const ms=document.getElementById('f-model');
+  const daily=+ms.value||850;
+  const modelName=ms.options[ms.selectedIndex]?.text.split('—')[0].trim()||'Seçili Araç';
+  const pu=document.getElementById('f-pu').value, re=document.getElementById('f-re').value;
+  const days=(pu&&re)?Math.max(1,Math.round((new Date(re)-new Date(pu))/86400000)):3;
+  const extras=[...document.querySelectorAll('.extra.on')].reduce((s,e)=>s+(+e.dataset.price||0),0);
+  const base=daily*days, tax=Math.round((base+extras)*0.2), total=base+extras+tax;
+  document.getElementById('sum-car').textContent=modelName;
+  document.getElementById('sum-days').textContent=days+' Gün';
+  document.getElementById('sum-daily').textContent='₺'+daily.toLocaleString('tr-TR');
+  document.getElementById('sum-extras').textContent='₺'+extras.toLocaleString('tr-TR');
+  document.getElementById('sum-tax').textContent='₺'+tax.toLocaleString('tr-TR');
+  document.getElementById('sum-total').textContent='₺'+total.toLocaleString('tr-TR');
+}
+function submitForm(){
+  const cn=document.getElementById('f-ccn').value.replace(/\s/g,'');
+  const fg=document.getElementById('fg-ccn'); fg.classList.remove('err');
+  if(cn.length<16){fg.classList.add('err');toast('Geçerli kart numarası girin','⚠️');return;}
+  ['fp4'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  document.getElementById('fp-ok').classList.add('on');
+  document.getElementById('res-code').textContent='VLX-'+new Date().getFullYear()+'-'+Math.floor(Math.random()*9999).toString().padStart(4,'0');
+  curStep=5; updateProg(); smoothTo('booking');
+  toast('🏁 Rezervasyon onaylandı!','✓');
+}
+function resetForm(){
+  document.getElementById('fp-ok').classList.remove('on');
+  document.getElementById('fp1').classList.add('on');
+  curStep=1; updateProg(); smoothTo('booking');
+}
+
+/* ═══ CARD FORMAT ═══ */
+function fmtCard(inp){
+  let v=inp.value.replace(/\D/g,'').slice(0,16);
+  v=v.replace(/(.{4})/g,'$1 ').trim(); inp.value=v;
+  document.getElementById('cc-num-d').textContent=v||'•••• •••• •••• ••••';
+}
+function fmtExp(inp){
+  let v=inp.value.replace(/\D/g,'').slice(0,4);
+  if(v.length>=2) v=v.slice(0,2)+'/'+v.slice(2);
+  inp.value=v;
+  document.getElementById('cc-exp-d').textContent=v||'MM/YY';
+}
+
+/* ═══ CAR MODAL ═══ */
+function openCarModal(btn){
+  const c=btn.closest('.car-card');
+  document.getElementById('m-img').src=c.querySelector('.car-photo img').src;
+  document.getElementById('m-make').textContent=c.dataset.make||'';
+  document.getElementById('m-model').textContent=c.dataset.name||'';
+  document.getElementById('m-price').textContent='₺'+Number(c.dataset.price).toLocaleString('tr-TR');
+  document.getElementById('carModalBg').classList.add('open');
+}
+function closeCarModal(){document.getElementById('carModalBg').classList.remove('open');}
+function carModalOut(e){if(e.target===document.getElementById('carModalBg'))closeCarModal();}
+function goToBooking(){closeCarModal();smoothTo('booking');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCarModal();closeCmpModal();}});
+
+/* ═══ TOAST ═══ */
+let tt;
+function toast(msg,ico='✓'){
+  clearTimeout(tt);
+  document.getElementById('t-msg').textContent=msg;
+  document.getElementById('t-ico').textContent=ico;
+  const el=document.getElementById('toast');
+  const prog=document.getElementById('t-prog');
+  el.classList.remove('show');
+  void el.offsetWidth;
+  prog.style.animation='none'; void prog.offsetWidth;
+  prog.style.animation='toastP 3.5s linear forwards';
+  el.classList.add('show');
+  tt=setTimeout(()=>el.classList.remove('show'),3500);
+}
+
+/* ═══ DEFAULT DATES ═══ */
+const today=new Date();
+const tom=new Date(today); tom.setDate(today.getDate()+1);
+const nxt=new Date(today); nxt.setDate(today.getDate()+7);
+const fmt=d=>d.toISOString().split('T')[0];
 </script>
 </body>
 </html>
