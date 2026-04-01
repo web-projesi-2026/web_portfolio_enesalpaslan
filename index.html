@@ -15,6 +15,7 @@
 <!-- Fonts & CSS -->
 <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<style>
 /* ═══════════════════════════════════════════
    VELOX v3 — MOTORSPORT EDITION
    Palette: Carbon black · Race red · Titanium white
@@ -114,7 +115,7 @@ body {
   color: var(--text);
   font-family: 'Barlow', sans-serif;
   overflow-x: hidden;
-  cursor: none;
+  cursor: auto;
   transition: background 0.5s, color 0.5s;
 }
 [data-theme="light"] body {
@@ -290,7 +291,7 @@ nav.scrolled {
 
 /* Theme toggle — race flag style */
 .theme-btn {
-  width: 52px; height: 26px; cursor: none;
+  width: 52px; height: 26px; cursor: auto;
   background: var(--surface2); border: 1px solid var(--border2);
   position: relative; overflow: hidden;
   transition: var(--transition);
@@ -327,7 +328,7 @@ nav.scrolled {
   font-size: 12px; font-weight: 700; letter-spacing: 2px;
   text-transform: uppercase;
   background: transparent; border: 1px solid var(--red);
-  color: var(--red); padding: 8px 16px; cursor: none;
+  color: var(--red); padding: 8px 16px; cursor: auto;
   transition: var(--transition);
   display: none; align-items: center; gap: 8px;
   clip-path: var(--clip-sharp);
@@ -348,7 +349,7 @@ nav.scrolled {
   font-size: 13px; font-weight: 700; letter-spacing: 2px;
   text-transform: uppercase;
   background: var(--red); color: #fff;
-  border: none; padding: 11px 28px; cursor: none;
+  border: none; padding: 11px 28px; cursor: auto;
   transition: var(--transition);
   clip-path: var(--clip-sharp);
   position: relative; overflow: hidden;
@@ -529,7 +530,7 @@ nav.scrolled {
   text-transform: uppercase;
   background: var(--red); color: #fff;
   border: none; padding: 16px 40px;
-  cursor: none; transition: var(--transition);
+  cursor: auto; transition: var(--transition);
   clip-path: var(--clip-sharp);
   position: relative; overflow: hidden;
 }
@@ -547,7 +548,7 @@ nav.scrolled {
   text-transform: uppercase;
   background: transparent; color: var(--text);
   border: 1.5px solid var(--border2); padding: 15px 32px;
-  cursor: none; transition: var(--transition);
+  cursor: auto; transition: var(--transition);
   display: flex; align-items: center; gap: 10px;
 }
 .btn-outline:hover { border-color: var(--red); color: var(--red); }
@@ -609,7 +610,7 @@ nav.scrolled {
   color: var(--text); padding: 8px 16px 14px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 16px; font-weight: 600; letter-spacing: 0.5px;
-  outline: none; cursor: none;
+  outline: none; cursor: auto;
   transition: var(--transition);
   appearance: none;
   width: 100%;
@@ -626,7 +627,7 @@ nav.scrolled {
   text-transform: uppercase;
   background: var(--red); color: #fff;
   border: none; padding: 0 36px;
-  cursor: none; transition: var(--transition);
+  cursor: auto; transition: var(--transition);
   display: flex; align-items: center; gap: 12px;
   white-space: nowrap;
 }
@@ -671,7 +672,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   text-transform: uppercase;
   background: var(--surface2); color: var(--text-muted);
   border: none; padding: 10px 22px;
-  cursor: none; transition: var(--transition);
+  cursor: auto; transition: var(--transition);
   position: relative;
 }
 .ftab::after {
@@ -703,7 +704,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
 .car-card {
   background: var(--surface);
   position: relative; overflow: hidden;
-  cursor: none;
+  cursor: auto;
   transition: var(--transition);
   opacity: 0; transform: translateY(28px);
 }
@@ -730,7 +731,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   background: rgba(10,10,10,0.8); backdrop-filter: blur(6px);
   border: 1.5px solid var(--border2);
   color: var(--text-muted);
-  font-size: 14px; cursor: none;
+  font-size: 14px; cursor: auto;
   display: flex; align-items: center; justify-content: center;
   transition: var(--transition);
   font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
@@ -833,7 +834,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   text-transform: uppercase;
   background: transparent; color: var(--red);
   border: 1.5px solid var(--red);
-  padding: 8px 18px; cursor: none;
+  padding: 8px 18px; cursor: auto;
   transition: var(--transition);
   clip-path: var(--clip-sharp);
   position: relative; overflow: hidden;
@@ -879,7 +880,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   width: 18px; height: 18px;
   background: var(--red); color: #fff;
   border: none; border-radius: 50%; font-size: 11px;
-  cursor: none; display: flex; align-items: center; justify-content: center;
+  cursor: auto; display: flex; align-items: center; justify-content: center;
   line-height: 1;
 }
 .cmp-bar-actions { display: flex; gap: 10px; }
@@ -914,7 +915,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
 .cmp-modal-title::before { content: '⚑'; color: var(--red); }
 .modal-close {
   background: none; border: none; color: var(--text-muted);
-  font-size: 26px; cursor: none; transition: color .2s; line-height: 1;
+  font-size: 26px; cursor: auto; transition: color .2s; line-height: 1;
 }
 .modal-close:hover { color: var(--red); }
 .cmp-table { width: 100%; border-collapse: collapse; }
@@ -1034,7 +1035,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
 .prog-item {
   flex: 1; padding: 18px 20px;
   display: flex; align-items: center; gap: 14px;
-  position: relative; cursor: none;
+  position: relative; cursor: auto;
   transition: background .25s;
 }
 .prog-item::after {
@@ -1091,7 +1092,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 15px; font-weight: 500;
   outline: none; transition: var(--transition);
-  appearance: none; cursor: none;
+  appearance: none; cursor: auto;
 }
 .f-group input:focus, .f-group select:focus, .f-group textarea:focus {
   border-color: var(--red);
@@ -1132,7 +1133,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
 .extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); margin-bottom: 24px; }
 .extra {
   background: var(--surface);
-  padding: 16px 18px; cursor: none;
+  padding: 16px 18px; cursor: auto;
   display: flex; align-items: center; gap: 14px;
   transition: var(--transition); position: relative;
   border-left: 3px solid transparent;
@@ -1227,7 +1228,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   text-transform: uppercase;
   background: transparent; border: 1px solid var(--border);
   color: var(--text-dim); padding: 11px 22px;
-  cursor: none; transition: var(--transition);
+  cursor: auto; transition: var(--transition);
 }
 .btn-back:hover { border-color: var(--border2); color: var(--text); }
 .btn-next {
@@ -1236,7 +1237,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   text-transform: uppercase;
   background: var(--red); color: #fff;
   border: none; padding: 12px 36px;
-  cursor: none; transition: var(--transition);
+  cursor: auto; transition: var(--transition);
   clip-path: var(--clip-sharp);
   position: relative; overflow: hidden;
 }
@@ -1308,7 +1309,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
 /* ── CITIES ── */
 #cities { background: var(--bg); }
 .cities-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--border); margin-top: 50px; }
-.city-card { position: relative; height: 210px; overflow: hidden; cursor: none; }
+.city-card { position: relative; height: 210px; overflow: hidden; cursor: auto; }
 .city-card img { width:100%; height:100%; object-fit:cover; transition: transform .6s, filter .5s; filter: saturate(.5) brightness(.45); }
 .city-card:hover img { transform: scale(1.1); filter: saturate(.9) brightness(.65); }
 .city-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; background: linear-gradient(to top, rgba(10,10,10,.9) 0%, transparent 55%); }
@@ -1370,7 +1371,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   position: fixed; bottom: 32px; left: 32px; z-index: 500;
   width: 40px; height: 40px;
   background: var(--surface); border: 1px solid var(--border);
-  color: var(--text-muted); font-size: 18px; cursor: none;
+  color: var(--text-muted); font-size: 18px; cursor: auto;
   display: flex; align-items: center; justify-content: center;
   transition: var(--transition); opacity: 0; transform: translateY(16px);
   clip-path: var(--clip-sharp);
@@ -1407,6 +1408,7 @@ footer::before {
 .footer-links a:hover { color: var(--red); }
 
 /* ── REVEAL ── */
+</style>
 </head>
 <body>
 
@@ -1978,7 +1980,7 @@ footer::before {
     </div>
     <div class="footer-col"><h5>Araçlar</h5><ul><li><a href="#">Ekonomi Sınıfı</a></li><li><a href="#">SUV & Crossover</a></li><li><a href="#">Lüks & Premium</a></li><li><a href="#">Elektrikli</a></li></ul></div>
     <div class="footer-col"><h5>Şirket</h5><ul><li><a href="#">Hakkımızda</a></li><li><a href="#">Kariyer</a></li><li><a href="#">Basın</a></li><li><a href="#">Blog</a></li></ul></div>
-    <div class="footer-col"><h5>İletişim</h5><ul><li><a href="#">0850 888 55 55</a></li><li><a href="#">info@velox.com.tr</a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Canlı Destek</a></li></ul></div>
+    <div class="footer-col"><h5>İletişim</h5><ul><li><a href="#">0850 888 55 55</a></li><li><a href="#"><span class="__cf_email__" data-cfemail="dab3b4bcb59aacbfb6b5a2f4b9b5b7f4aea8">[email&#160;protected]</span></a></li><li><a href="#">WhatsApp</a></li><li><a href="#">Canlı Destek</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span>© 2025 VELOX Araç Kiralama A.Ş.</span>
@@ -2030,5 +2032,20 @@ footer::before {
 </div>
 
 <script src="assets/js/script.js"></script>
+<script>
+// Loader güvenlik kapatıcı — en fazla 4 saniyede kapanır
+(function(){
+  function closeLoader(){
+    var loader = document.getElementById('loader');
+    var txt = document.getElementById('loaderTxt');
+    if(!loader) return;
+    if(txt) txt.textContent = '100% Hazır';
+    setTimeout(function(){ loader.classList.add('out'); }, 400);
+  }
+  window.addEventListener('load', closeLoader);
+  // Güvenlik: load olayı gelmese bile 4 saniyede kapat
+  setTimeout(closeLoader, 4000);
+})();
+</script>
 </body>
 </html>
