@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELOX — İletişim</title>
+<link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0a; --bg2:#111; --bg3:#181818;
+  --surface:#1a1a1a; --surface2:#222; --surface3:#2a2a2a;
+  --red:#e8001f; --red2:#ff1a35; --red-dim:rgba(232,0,31,.1); --red-glow:rgba(232,0,31,.25);
+  --text:#f0f0f0; --text-dim:#888; --text-muted:#555;
+  --border:rgba(255,255,255,.06); --border2:rgba(255,255,255,.12);
+  --carbon:repeating-linear-gradient(45deg,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 1px,transparent 1px,transparent 8px),repeating-linear-gradient(-45deg,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 1px,transparent 1px,transparent 8px);
+  --clip:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  --tr:all .3s cubic-bezier(.25,.8,.25,1);
+}
+[data-theme="light"]{
+  --bg:#f0f0ee; --bg2:#e8e8e6; --bg3:#e0e0de;
+  --surface:#fff; --surface2:#f4f4f2; --surface3:#ebebea;
+  --red:#cc0018; --red2:#e8001f; --red-dim:rgba(204,0,24,.07); --red-glow:rgba(204,0,24,.15);
+  --text:#0d0d0d; --text-dim:#555; --text-muted:#999;
+  --border:rgba(0,0,0,.08); --border2:rgba(0,0,0,.16);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);background-image:var(--carbon);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none;transition:background .5s,color .5s;}
+::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg2);} ::-webkit-scrollbar-thumb{background:var(--red);}
+.cursor{width:8px;height:8px;background:var(--red);border-radius:50%;position:fixed;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 12px var(--red-glow);}
+.cursor-cross{position:fixed;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
+.cursor-cross::before,.cursor-cross::after{content:'';position:absolute;background:rgba(232,0,31,.5);}
+.cursor-cross::before{width:20px;height:1px;top:0;left:-10px;}
+.cursor-cross::after{width:1px;height:20px;top:-10px;left:0;}
+.cursor.hov{width:4px;height:4px;background:#f0f0f0;}
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:9999;background:var(--border);}
+#prog-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--red2));width:0;transition:width .08s linear;box-shadow:0 0 12px var(--red-glow);}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 64px;display:flex;align-items:center;justify-content:space-between;transition:var(--tr);}
+nav.sc{padding:14px 64px;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+[data-theme="light"] nav.sc{background:rgba(240,240,238,.95);}
+.nav-logo{font-family:'Racing Sans One',cursive;font-size:24px;letter-spacing:4px;text-decoration:none;color:var(--text);position:relative;}
+.nav-logo em{color:var(--red);font-style:normal;}
+.nav-logo::after{content:'MOTORSPORT';position:absolute;bottom:-8px;left:0;font-family:'Barlow Condensed',sans-serif;font-size:8px;letter-spacing:4px;color:var(--red);font-weight:700;}
+.nav-links{display:flex;gap:30px;list-style:none;}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .25s;position:relative;}
+.nav-links a::before{content:'';position:absolute;bottom:-3px;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::before,.nav-links a.active::before{transform:scaleX(1);transform-origin:left;}
+.nav-links a.active{color:var(--red);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.theme-btn{width:48px;height:24px;cursor:none;background:var(--surface2);border:1px solid var(--border2);position:relative;overflow:hidden;}
+.theme-ind{position:absolute;inset:3px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;color:#fff;}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--red);color:#fff;border:none;padding:10px 24px;cursor:none;transition:var(--tr);clip-path:var(--clip);}
+.nav-cta:hover{background:#fff;color:var(--red);}
+
+.checker{height:12px;background:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 24px,var(--bg) 24px,var(--bg) 48px);}
+.checker.alt{background:repeating-linear-gradient(90deg,var(--bg) 0,var(--bg) 24px,var(--red) 24px,var(--red) 48px);}
+
+/* PAGE HERO */
+.page-hero{min-height:52vh;display:flex;align-items:flex-end;padding:160px 64px 64px;position:relative;overflow:hidden;background:var(--bg2);}
+.page-hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 10px,rgba(232,0,31,.03) 10px,rgba(232,0,31,.03) 20px);}
+.page-hero-slash{position:absolute;top:0;right:0;width:45%;height:100%;background:linear-gradient(170deg,transparent 30%,var(--red-dim) 100%);clip-path:polygon(20% 0,100% 0,100% 100%,0% 100%);}
+.page-hero-slash::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,transparent,var(--red) 40%,var(--red) 60%,transparent);}
+.page-eyebrow{display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.page-eyebrow::before{content:'';width:20px;height:2px;background:var(--red);}
+.page-title{font-family:'Racing Sans One',cursive;font-size:clamp(52px,8vw,110px);line-height:.9;letter-spacing:1px;position:relative;z-index:2;}
+.page-title span{display:block;}
+.page-title .t-out{-webkit-text-stroke:2px var(--red);color:transparent;}
+
+/* CONTACT GRID */
+.contact-section{padding:90px 64px;background:var(--bg2);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:2px;background:var(--border);}
+
+/* INFO PANEL */
+.info-panel{background:var(--surface);padding:48px;}
+.info-title{font-family:'Racing Sans One',cursive;font-size:32px;letter-spacing:1px;margin-bottom:8px;}
+.info-sub{font-size:13px;color:var(--text-dim);line-height:1.75;margin-bottom:40px;}
+.contact-items{display:flex;flex-direction:column;gap:2px;background:var(--border);margin-bottom:36px;}
+.contact-item{background:var(--surface2);padding:20px 22px;display:flex;align-items:center;gap:18px;border-left:3px solid transparent;transition:var(--tr);cursor:none;}
+.contact-item:hover{border-left-color:var(--red);background:var(--surface3);}
+.contact-ico{width:44px;height:44px;background:var(--red-dim);border:1px solid rgba(232,0,31,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:var(--tr);}
+.contact-item:hover .contact-ico{background:var(--red);border-color:var(--red);}
+.contact-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;}
+.contact-value{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;letter-spacing:0.5px;color:var(--text);}
+.contact-note{font-size:11px;color:var(--text-muted);margin-top:1px;}
+
+/* Hours */
+.hours-box{background:var(--bg2);border:1px solid var(--border);border-top:2px solid var(--red);padding:24px;margin-bottom:28px;}
+.hours-title{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:500;}
+.hours-row:last-child{border-bottom:none;}
+.hours-day{color:var(--text-dim);}
+.hours-time{font-weight:700;}
+.hours-time.open{color:var(--red);}
+
+/* Social */
+.social-row{display:flex;gap:10px;}
+.soc-btn{width:44px;height:44px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:none;transition:var(--tr);}
+.soc-btn:hover{background:var(--red);border-color:var(--red);}
+
+/* FORM PANEL */
+.form-panel{background:var(--surface2);padding:48px;}
+.form-title{font-family:'Racing Sans One',cursive;font-size:28px;letter-spacing:1px;margin-bottom:6px;}
+.form-sub{font-size:13px;color:var(--text-dim);margin-bottom:32px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.f-row.full{grid-template-columns:1fr;}
+.f-group{display:flex;flex-direction:column;gap:6px;}
+.f-group label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-muted);}
+.f-group input,.f-group select,.f-group textarea{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:13px 14px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:500;outline:none;transition:var(--tr);appearance:none;cursor:none;}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--red);background:var(--red-dim);box-shadow:0 0 0 2px rgba(232,0,31,.1);}
+.f-group textarea{resize:none;height:120px;}
+.f-group select option{background:var(--surface);}
+.f-group.err input,.f-group.err select,.f-group.err textarea{border-color:#ff4444!important;}
+.err-txt{font-size:11px;color:#ff4444;display:none;}
+.f-group.err .err-txt{display:block;}
+
+/* Char count */
+.char-count{font-family:'Barlow Condensed',sans-serif;font-size:11px;color:var(--text-muted);text-align:right;margin-top:3px;letter-spacing:1px;}
+
+.submit-btn{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--red);color:#fff;border:none;padding:16px 48px;cursor:none;transition:var(--tr);clip-path:var(--clip);position:relative;overflow:hidden;width:100%;margin-top:8px;}
+.submit-btn::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transition:left .5s;}
+.submit-btn:hover::after{left:150%;}
+.submit-btn:hover{background:var(--red2);box-shadow:0 0 40px var(--red-glow);}
+.submit-btn:disabled{background:var(--surface3);color:var(--text-muted);cursor:not-allowed;clip-path:none;box-shadow:none;}
+
+/* Success state */
+.form-success{display:none;text-align:center;padding:48px 20px;}
+.form-success.show{display:block;}
+.form-success-flag{display:flex;justify-content:center;margin-bottom:24px;}
+.success-flag-inner{display:grid;grid-template-columns:repeat(6,16px);grid-template-rows:repeat(3,16px);}
+.sf-c:nth-child(odd){background:#fff;}
+.sf-c:nth-child(even){background:#111;}
+.form-success h3{font-family:'Racing Sans One',cursive;font-size:38px;letter-spacing:1px;margin-bottom:10px;}
+.form-success p{font-size:13px;color:var(--text-dim);line-height:1.7;max-width:320px;margin:0 auto 28px;}
+.success-id{font-family:'Racing Sans One',cursive;font-size:20px;letter-spacing:4px;color:var(--red);padding:10px 24px;background:var(--red-dim);border:1px solid rgba(232,0,31,.25);display:inline-block;}
+
+/* MAP section */
+.map-section{padding:0;background:var(--bg);position:relative;}
+.map-wrap{height:400px;position:relative;overflow:hidden;background:var(--surface);border-top:2px solid var(--red);}
+.map-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;position:relative;overflow:hidden;}
+.map-placeholder::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 12px,rgba(232,0,31,.025) 12px,rgba(232,0,31,.025) 24px);}
+.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;}
+.map-label{font-family:'Racing Sans One',cursive;font-size:48px;color:var(--border2);letter-spacing:4px;position:relative;z-index:1;}
+.map-pin{font-size:40px;position:relative;z-index:1;animation:pinBounce 2s ease-in-out infinite;}
+@keyframes pinBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.map-address{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);position:relative;z-index:1;}
+
+/* Office cards */
+.offices-section{padding:80px 64px;background:var(--surface);}
+.offices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:40px;}
+.office-card{background:var(--surface);padding:28px;border-left:3px solid transparent;transition:var(--tr);opacity:0;transform:translateY(20px);}
+.office-card.vis{opacity:1;transform:translateY(0);}
+.office-card:hover{border-left-color:var(--red);background:var(--surface2);}
+.office-city{font-family:'Racing Sans One',cursive;font-size:26px;letter-spacing:1px;margin-bottom:4px;}
+.office-type{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+.office-info{font-size:12px;color:var(--text-dim);line-height:1.8;}
+.office-info strong{display:block;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;margin-top:6px;}
+
+/* FAQ */
+.faq-section{padding:80px 64px;background:var(--bg2);}
+.faq-list{max-width:720px;margin-top:40px;display:flex;flex-direction:column;gap:2px;background:var(--border);}
+.faq-item{background:var(--surface);overflow:hidden;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:none;transition:var(--tr);font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;border-left:3px solid transparent;}
+.faq-item.open .faq-q{border-left-color:var(--red);background:var(--red-dim);color:var(--red);}
+.faq-arrow{font-size:18px;transition:transform .3s;color:var(--text-muted);flex-shrink:0;}
+.faq-item.open .faq-arrow{transform:rotate(90deg);color:var(--red);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s;}
+.faq-a-inner{padding:0 24px;font-size:13px;color:var(--text-dim);line-height:1.75;}
+.faq-item.open .faq-a{max-height:200px;}
+.faq-item.open .faq-a-inner{padding:16px 24px 20px;}
+
+/* CTA */
+.cta-banner{background:var(--red);padding:80px 64px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.cta-banner h2{font-family:'Racing Sans One',cursive;font-size:clamp(28px,4vw,48px);color:#fff;line-height:1;}
+.cta-banner p{font-size:14px;color:rgba(255,255,255,.75);margin-top:8px;}
+.btn-white{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:#fff;color:var(--red);border:none;padding:16px 40px;cursor:none;transition:var(--tr);clip-path:var(--clip);white-space:nowrap;}
+.btn-white:hover{background:#000;color:#fff;}
+
+footer{background:var(--bg);border-top:2px solid var(--border);padding:40px 64px 28px;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:1px;color:var(--text-muted);flex-wrap:wrap;gap:10px;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:12px;transition:color .25s;}
+.footer-links a:hover{color:var(--red);}
+.footer-logo{font-family:'Racing Sans One',cursive;font-size:22px;letter-spacing:4px;}
+.footer-logo em{color:var(--red);font-style:normal;}
+
+/* Toast */
+.toast{position:fixed;bottom:32px;right:32px;z-index:3000;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--red);padding:14px 22px;display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:500;letter-spacing:.5px;transform:translateX(120%);opacity:0;transition:transform .4s cubic-bezier(.25,.8,.25,1),opacity .4s;max-width:320px;}
+.toast.show{transform:translateX(0);opacity:1;}
+.toast-prog{position:absolute;bottom:0;left:0;height:2px;background:var(--red);animation:toastP 3.5s linear forwards;}
+@keyframes toastP{from{width:100%}to{width:0}}
+
+.rev{opacity:0;transform:translateY(28px);transition:opacity .65s,transform .65s;}
+.rev.vis{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<div id="prog"><div id="prog-fill"></div></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-cross" id="cc"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">VEL<em>O</em>X</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Ana Sayfa</a></li>
+    <li><a href="about.html">Hakkımızda</a></li>
+    <li><a href="projects.html">Projeler</a></li>
+    <li><a href="contact.html" class="active">İletişim</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="theme-btn" id="themeBtn"><div class="theme-ind" id="themeInd">DARK</div></div>
+    <button class="nav-cta" onclick="location.href='../index.html#booking'">Hemen Kirala</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-slash"></div>
+  <div style="position:relative;z-index:2;">
+    <div class="page-eyebrow">Bize Ulaşın</div>
+    <div class="page-title">
+      <span>İLETİŞİM</span>
+      <span class="t-out">HATTI</span>
+    </div>
+  </div>
+</div>
+
+<div class="checker"></div>
+
+<!-- CONTACT MAIN -->
+<div class="contact-section">
+  <div class="contact-grid">
+
+    <!-- INFO -->
+    <div class="info-panel rev">
+      <div class="info-title">Pit Duvarına Bağlanın</div>
+      <p class="info-sub">Rezervasyon, araç bilgisi veya destek için 7/24 hizmetinizdeyiz. En hızlı yanıt için WhatsApp hattımızı tercih edin.</p>
+
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-ico">📞</div>
+          <div>
+            <div class="contact-label">Telefon</div>
+            <div class="contact-value">0850 888 55 55</div>
+            <div class="contact-note">Ücretsiz hat · 7/24 aktif</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-ico">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+90 532 888 55 55</div>
+            <div class="contact-note">Ortalama yanıt: 3 dakika</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-ico">✉️</div>
+          <div>
+            <div class="contact-label">E-posta</div>
+            <div class="contact-value">info@velox.com.tr</div>
+            <div class="contact-note">24 saat içinde yanıt garantisi</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-ico">📍</div>
+          <div>
+            <div class="contact-label">Merkez Ofis</div>
+            <div class="contact-value">Levent, İstanbul</div>
+            <div class="contact-note">Büyükdere Cad. No:185 Kat:8</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hours-box">
+        <div class="hours-title">Çalışma Saatleri</div>
+        <div class="hours-row"><span class="hours-day">Pazartesi – Cuma</span><span class="hours-time open">08:00 – 22:00</span></div>
+        <div class="hours-row"><span class="hours-day">Cumartesi</span><span class="hours-time open">09:00 – 20:00</span></div>
+        <div class="hours-row"><span class="hours-day">Pazar</span><span class="hours-time open">10:00 – 18:00</span></div>
+        <div class="hours-row"><span class="hours-day">Yol Yardımı</span><span class="hours-time open">7/24 Aktif</span></div>
+      </div>
+
+      <div class="social-row">
+        <div class="soc-btn">𝕏</div>
+        <div class="soc-btn">in</div>
+        <div class="soc-btn">📘</div>
+        <div class="soc-btn">📸</div>
+        <div class="soc-btn">▶️</div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-panel rev">
+      <div id="formContent">
+        <div class="form-title">Mesaj Gönder</div>
+        <p class="form-sub">Sorularınız için aşağıdaki formu doldurun, en kısa sürede size döneceğiz.</p>
+
+        <div class="f-row">
+          <div class="f-group" id="fg-name"><label>Ad Soyad *</label><input type="text" id="f-name" placeholder="Ahmet Yılmaz"><span class="err-txt">Bu alan zorunludur.</span></div>
+          <div class="f-group" id="fg-phone"><label>Telefon</label><input type="tel" id="f-phone" placeholder="+90 555 000 00 00"></div>
+        </div>
+        <div class="f-row full">
+          <div class="f-group" id="fg-email"><label>E-posta *</label><input type="email" id="f-email" placeholder="ahmet@email.com"><span class="err-txt">Geçerli e-posta girin.</span></div>
+        </div>
+        <div class="f-row full">
+          <div class="f-group">
+            <label>Konu *</label>
+            <select id="f-subject">
+              <option value="">Konu Seçin...</option>
+              <option value="rezervasyon">Rezervasyon Hakkında</option>
+              <option value="arac">Araç Bilgisi</option>
+              <option value="fiyat">Fiyat & Kampanya</option>
+              <option value="sikayet">Şikayet & Öneri</option>
+              <option value="kurumsal">Kurumsal Kiralama</option>
+              <option value="diger">Diğer</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-row full">
+          <div class="f-group" id="fg-msg">
+            <label>Mesajınız *</label>
+            <textarea id="f-msg" placeholder="Mesajınızı buraya yazın..." oninput="updateChar()"></textarea>
+            <div class="char-count"><span id="charCount">0</span> / 500</div>
+            <span class="err-txt">En az 10 karakter girin.</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:12px;color:var(--text-dim);">
+          <input type="checkbox" id="f-agree" style="width:16px;height:16px;accent-color:var(--red);cursor:none;">
+          <label for="f-agree" style="cursor:none;">KVKK kapsamında verilerimin işlenmesini kabul ediyorum.</label>
+        </div>
+
+        <button class="submit-btn" id="submitBtn" onclick="sendForm()">📡 Mesajı Gönder</button>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-flag"><div class="success-flag-inner" id="sflag"></div></div>
+        <h3>MESAJINIZ ALINDI!</h3>
+        <p>En geç 24 saat içinde size geri döneceğiz. WhatsApp'tan daha hızlı yanıt alabilirsiniz.</p>
+        <div class="success-id" id="ticketId">TKT-00000</div>
+        <br><br>
+        <button class="submit-btn" style="width:auto;padding:14px 32px;" onclick="resetForm()">← Yeni Mesaj Gönder</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="checker alt"></div>
+
+<!-- MAP -->
+<div class="map-section">
+  <div class="map-wrap">
+    <div class="map-placeholder">
+      <div class="map-grid"></div>
+      <div class="map-pin">📍</div>
+      <div class="map-label">İSTANBUL</div>
+      <div class="map-address">Büyükdere Cad. No:185 Levent · İstanbul</div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFICES -->
+<div class="offices-section">
+  <div style="display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;" class="rev"><span style="width:16px;height:2px;background:var(--red);display:inline-block;"></span>Ofislerimiz</div>
+  <h2 style="font-family:'Racing Sans One',cursive;font-size:clamp(28px,4vw,48px);margin-bottom:0;" class="rev">TÜRKİYE GENELİ</h2>
+  <div class="offices-grid">
+    <div class="office-card">
+      <div class="office-city">İstanbul</div>
+      <div class="office-type">Genel Merkez</div>
+      <div class="office-info">Büyükdere Cad. No:185 Kat:8, Levent<strong>0850 888 55 55</strong>Hafta içi 08:00–22:00</div>
+    </div>
+    <div class="office-card">
+      <div class="office-city">Ankara</div>
+      <div class="office-type">Bölge Müdürlüğü</div>
+      <div class="office-info">Tunalı Hilmi Cad. No:42, Kavaklıdere<strong>0312 888 55 55</strong>Hafta içi 09:00–20:00</div>
+    </div>
+    <div class="office-card">
+      <div class="office-city">İzmir</div>
+      <div class="office-type">Bölge Müdürlüğü</div>
+      <div class="office-info">Alsancak Kordon Boyu No:18<strong>0232 888 55 55</strong>Hafta içi 09:00–20:00</div>
+    </div>
+    <div class="office-card">
+      <div class="office-city">Antalya</div>
+      <div class="office-type">Turizm Ofisi</div>
+      <div class="office-info">Konyaaltı Bulvarı No:7, Merkez<strong>0242 888 55 55</strong>7 Gün 08:00–22:00</div>
+    </div>
+    <div class="office-card">
+      <div class="office-city">Bursa</div>
+      <div class="office-type">Şube</div>
+      <div class="office-info">Nilüfer Cad. No:34, Nilüfer<strong>0224 888 55 55</strong>Hafta içi 09:00–18:00</div>
+    </div>
+    <div class="office-card">
+      <div class="office-city">Trabzon</div>
+      <div class="office-type">Şube</div>
+      <div class="office-info">Uzun Sokak No:12, Merkez<strong>0462 888 55 55</strong>Hafta içi 09:00–18:00</div>
+    </div>
+  </div>
+</div>
+
+<div class="checker"></div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div style="display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;" class="rev"><span style="width:16px;height:2px;background:var(--red);display:inline-block;"></span>SSS</div>
+  <h2 style="font-family:'Racing Sans One',cursive;font-size:clamp(28px,4vw,48px);margin-bottom:0;" class="rev">SIK SORULAN SORULAR</h2>
+  <div class="faq-list rev">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Minimum kiralama süresi nedir? <span class="faq-arrow">›</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Minimum kiralama süremiz 1 gündür. Günlük, haftalık ve aylık kiralama seçenekleri sunuyoruz. Uzun süreli kiralamalarda özel indirimler uygulanmaktadır.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Kasko zorunlu mu? <span class="faq-arrow">›</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Tüm araçlarımız standart kasko ile teslim edilir. İlave olarak mini hasar güvencesi içeren "Tam Kasko Upgrade" paketimizi de tercih edebilirsiniz.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Araçlar nasıl teslim edilir? <span class="faq-arrow">›</span></div>
+      <div class="faq-a"><div class="faq-a-inner">16 havalimanında araç sizi kapıda karşılar. Şehir içi adresinize teslimat seçeneği de mevcuttur (ek ücret uygulanır). Ayrıca ofislerimizden bizzat teslim alabilirsiniz.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">İptal politikanız nedir? <span class="faq-arrow">›</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Rezervasyon tarihinden 48 saat öncesine kadar yapılan iptallerde tam iade yapılır. 24-48 saat arasında %50 iade uygulanır. 24 saatten kısa sürede yapılan iptallerde iade yapılmamaktadır.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Ehliyet şartı nedir? <span class="faq-arrow">›</span></div>
+      <div class="faq-a"><div class="faq-a-inner">En az 2 yıllık geçerli Türk veya uluslararası ehliyete sahip olmanız gerekmektedir. Lüks araçlar için minimum 3 yıl sürücülük deneyimi aranmaktadır.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div><h2>Hazır mısınız?</h2><p>Aracınızı seçin, rezervasyonunuzu yapın. Kalanı bize bırakın.</p></div>
+  <button class="btn-white" onclick="location.href='../index.html#booking'">🏁 Rezervasyon Yap</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <span class="footer-logo">VEL<em>O</em>X</span>
+    <span>© 2025 VELOX Araç Kiralama A.Ş.</span>
+    <div class="footer-links"><a href="about.html">Hakkımızda</a><a href="projects.html">Projeler</a><a href="contact.html">İletişim</a></div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span id="t-ico">✓</span>
+  <span id="t-msg">İşlem başarılı</span>
+  <div class="toast-prog" id="t-prog"></div>
+</div>
+
+<script>
+// Build success flag
+const sfEl=document.getElementById('sflag');
+for(let i=0;i<18;i++){const c=document.createElement('div');c.className='sf-c';sfEl.appendChild(c);}
+
+// Cursor
+const cur=document.getElementById('cursor'),cc=document.getElementById('cc');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function loop(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cc.style.left=cx+'px';cc.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.contact-item,.soc-btn,.office-card,.faq-q').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('hov'));el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));});
+
+// Scroll
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('sc',scrollY>50);document.getElementById('prog-fill').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%';});
+
+// Theme
+document.getElementById('themeBtn').addEventListener('click',()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';document.getElementById('themeInd').textContent=h.dataset.theme==='dark'?'DARK':'LIGHT';});
+
+// Char count
+function updateChar(){
+  const v=document.getElementById('f-msg').value;
+  document.getElementById('charCount').textContent=v.length;
+  if(v.length>500)document.getElementById('f-msg').value=v.slice(0,500);
+}
+
+// Form submit
+function sendForm(){
+  let ok=true;
+  const name=document.getElementById('f-name').value;
+  const email=document.getElementById('f-email').value;
+  const msg=document.getElementById('f-msg').value;
+  const agree=document.getElementById('f-agree').checked;
+
+  [['fg-name',name,v=>v.trim().length>1],['fg-email',email,v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
+   ['fg-msg',msg,v=>v.trim().length>=10]]
+  .forEach(([g,v,t])=>{const fg=document.getElementById(g);if(!t(v)){fg.classList.add('err');ok=false;}else fg.classList.remove('err');});
+
+  if(!agree){toast('KVKK onayı gereklidir','⚠️');ok=false;}
+  if(!ok){toast('Lütfen zorunlu alanları doldurun','⚠️');return;}
+
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Gönderiliyor...';
+  setTimeout(()=>{
+    document.getElementById('formContent').style.display='none';
+    const s=document.getElementById('formSuccess');
+    s.classList.add('show');
+    document.getElementById('ticketId').textContent='TKT-'+Math.floor(Math.random()*99999).toString().padStart(5,'0');
+    toast('Mesajınız başarıyla gönderildi!','✓');
+  },1200);
+}
+
+function resetForm(){
+  document.getElementById('formContent').style.display='block';
+  document.getElementById('formSuccess').classList.remove('show');
+  document.getElementById('f-name').value='';
+  document.getElementById('f-email').value='';
+  document.getElementById('f-phone').value='';
+  document.getElementById('f-msg').value='';
+  document.getElementById('charCount').textContent='0';
+  document.getElementById('submitBtn').disabled=false;
+  document.getElementById('submitBtn').textContent='📡 Mesajı Gönder';
+}
+
+// FAQ
+function toggleFaq(el){
+  const item=el.closest('.faq-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+// Toast
+let tt;
+function toast(msg,ico='✓'){
+  clearTimeout(tt);
+  document.getElementById('t-msg').textContent=msg;
+  document.getElementById('t-ico').textContent=ico;
+  const el=document.getElementById('toast'),p=document.getElementById('t-prog');
+  el.classList.remove('show');void el.offsetWidth;
+  p.style.animation='none';void p.offsetWidth;p.style.animation='toastP 3.5s linear forwards';
+  el.classList.add('show');
+  tt=setTimeout(()=>el.classList.remove('show'),3500);
+}
+
+// IO
+const io=new IntersectionObserver(ents=>{ents.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.1});
+document.querySelectorAll('.rev,.office-card').forEach(el=>io.observe(el));
+document.querySelectorAll('.office-card').forEach((c,i)=>c.style.transitionDelay=(i*.08)+'s');
+</script>
+</body>
+</html>
