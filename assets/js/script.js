@@ -363,3 +363,20 @@ const today=new Date();
 const tom=new Date(today); tom.setDate(today.getDate()+1);
 const nxt=new Date(today); nxt.setDate(today.getDate()+7);
 const fmt=d=>d.toISOString().split('T')[0];
+
+/* ═══ HAMBURGER MENU ═══ */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+if(hamburgerBtn && navLinks) {
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburgerBtn.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+}
