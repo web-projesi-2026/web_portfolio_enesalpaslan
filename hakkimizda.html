@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELOX — Hakkımızda</title>
+<link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0a; --bg2:#111; --bg3:#181818;
+  --surface:#1a1a1a; --surface2:#222; --surface3:#2a2a2a;
+  --red:#e8001f; --red2:#ff1a35; --red-dim:rgba(232,0,31,.1); --red-glow:rgba(232,0,31,.25);
+  --text:#f0f0f0; --text-dim:#888; --text-muted:#555;
+  --border:rgba(255,255,255,.06); --border2:rgba(255,255,255,.12);
+  --carbon:repeating-linear-gradient(45deg,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 1px,transparent 1px,transparent 8px),repeating-linear-gradient(-45deg,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 1px,transparent 1px,transparent 8px);
+  --clip:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  --tr:all .3s cubic-bezier(.25,.8,.25,1);
+}
+[data-theme="light"]{
+  --bg:#f0f0ee; --bg2:#e8e8e6; --bg3:#e0e0de;
+  --surface:#fff; --surface2:#f4f4f2; --surface3:#ebebea;
+  --red:#cc0018; --red2:#e8001f; --red-dim:rgba(204,0,24,.07); --red-glow:rgba(204,0,24,.15);
+  --text:#0d0d0d; --text-dim:#555; --text-muted:#999;
+  --border:rgba(0,0,0,.08); --border2:rgba(0,0,0,.16);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);background-image:var(--carbon);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none;transition:background .5s,color .5s;}
+::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg2);} ::-webkit-scrollbar-thumb{background:var(--red);}
+
+/* CURSOR */
+.cursor{width:8px;height:8px;background:var(--red);border-radius:50%;position:fixed;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 12px var(--red-glow);}
+.cursor-cross{position:fixed;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
+.cursor-cross::before,.cursor-cross::after{content:'';position:absolute;background:rgba(232,0,31,.5);}
+.cursor-cross::before{width:20px;height:1px;top:0;left:-10px;}
+.cursor-cross::after{width:1px;height:20px;top:-10px;left:0;}
+.cursor.hov{width:4px;height:4px;background:#f0f0f0;}
+
+/* SCROLL PROGRESS */
+#prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:9999;background:var(--border);}
+#prog-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--red2));width:0;transition:width .08s linear;box-shadow:0 0 12px var(--red-glow);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:22px 64px;display:flex;align-items:center;justify-content:space-between;transition:var(--tr);}
+nav.sc{padding:14px 64px;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+[data-theme="light"] nav.sc{background:rgba(240,240,238,.95);}
+.nav-logo{font-family:'Racing Sans One',cursive;font-size:24px;letter-spacing:4px;text-decoration:none;color:var(--text);position:relative;}
+.nav-logo em{color:var(--red);font-style:normal;}
+.nav-logo::after{content:'MOTORSPORT';position:absolute;bottom:-8px;left:0;font-family:'Barlow Condensed',sans-serif;font-size:8px;letter-spacing:4px;color:var(--red);font-weight:700;}
+.nav-links{display:flex;gap:30px;list-style:none;}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-dim);text-decoration:none;transition:color .25s;position:relative;}
+.nav-links a::before{content:'';position:absolute;bottom:-3px;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:right;transition:transform .3s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::before{transform:scaleX(1);transform-origin:left;}
+.nav-links a.active{color:var(--red);}
+.nav-links a.active::before{transform:scaleX(1);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.theme-btn{width:48px;height:24px;cursor:none;background:var(--surface2);border:1px solid var(--border2);position:relative;overflow:hidden;}
+.theme-ind{position:absolute;inset:3px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;color:#fff;}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--red);color:#fff;border:none;padding:10px 24px;cursor:none;transition:var(--tr);clip-path:var(--clip);}
+.nav-cta:hover{background:#fff;color:var(--red);}
+
+/* CHECKER */
+.checker{height:12px;background:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 24px,var(--bg) 24px,var(--bg) 48px);}
+.checker.alt{background:repeating-linear-gradient(90deg,var(--bg) 0,var(--bg) 24px,var(--red) 24px,var(--red) 48px);}
+
+/* HERO */
+.page-hero{min-height:52vh;display:flex;align-items:flex-end;padding:160px 64px 64px;position:relative;overflow:hidden;background:var(--bg2);}
+.page-hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 10px,rgba(232,0,31,.03) 10px,rgba(232,0,31,.03) 20px);}
+.page-hero-slash{position:absolute;top:0;right:0;width:45%;height:100%;background:linear-gradient(170deg,transparent 30%,var(--red-dim) 100%);clip-path:polygon(20% 0,100% 0,100% 100%,0% 100%);}
+.page-hero-slash::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,transparent,var(--red) 40%,var(--red) 60%,transparent);}
+.page-eyebrow{display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.page-eyebrow::before{content:'';width:20px;height:2px;background:var(--red);}
+.page-title{font-family:'Racing Sans One',cursive;font-size:clamp(52px,8vw,110px);line-height:.9;letter-spacing:1px;position:relative;z-index:2;}
+.page-title span{display:block;}
+.page-title .t-out{-webkit-text-stroke:2px var(--red);color:transparent;}
+
+/* SECTIONS */
+section{padding:90px 64px;position:relative;}
+
+/* MISSION */
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.mission-text .sec-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.mission-text .sec-label::before{content:'';width:16px;height:2px;background:var(--red);}
+.mission-text h2{font-family:'Racing Sans One',cursive;font-size:clamp(32px,4vw,52px);line-height:1;margin-bottom:24px;}
+.mission-text p{font-size:15px;color:var(--text-dim);line-height:1.85;margin-bottom:16px;}
+.mission-visual{position:relative;height:460px;}
+.mission-img{width:100%;height:100%;object-fit:cover;filter:saturate(.6) brightness(.55);}
+.mission-visual::before,.mission-visual::after{content:'';position:absolute;z-index:2;width:28px;height:28px;border-color:var(--red);border-style:solid;}
+.mission-visual::before{top:14px;left:14px;border-width:2px 0 0 2px;}
+.mission-visual::after{bottom:14px;right:14px;border-width:0 2px 2px 0;}
+.mission-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,0,31,.12),transparent 60%);}
+
+/* NUMBERS */
+#numbers{background:var(--surface);border-top:2px solid var(--red);}
+.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);}
+.num-box{background:var(--surface);padding:48px 32px;text-align:center;position:relative;overflow:hidden;transition:var(--tr);}
+.num-box::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:transparent;transition:background .3s;}
+.num-box:hover{background:var(--surface2);}
+.num-box:hover::before{background:var(--red);}
+.num-val{font-family:'Racing Sans One',cursive;font-size:56px;color:var(--red);line-height:1;margin-bottom:8px;}
+.num-lbl{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);}
+
+/* TIMELINE */
+#timeline{background:var(--bg);}
+.timeline-title{font-family:'Racing Sans One',cursive;font-size:clamp(32px,4vw,52px);margin-bottom:60px;}
+.timeline{position:relative;max-width:800px;}
+.timeline::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--red),rgba(232,0,31,.1));}
+.tl-item{display:flex;gap:40px;margin-bottom:48px;position:relative;opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s;}
+.tl-item.vis{opacity:1;transform:translateX(0);}
+.tl-dot{width:44px;height:44px;border-radius:50%;border:2px solid var(--red);background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Racing Sans One',cursive;font-size:10px;color:var(--red);position:relative;z-index:1;}
+.tl-dot.big{background:var(--red);color:#fff;}
+.tl-content{flex:1;padding-top:10px;}
+.tl-year{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.tl-heading{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.tl-text{font-size:13px;color:var(--text-dim);line-height:1.7;}
+
+/* TEAM */
+#team{background:var(--surface);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:48px;}
+.team-card{background:var(--surface);overflow:hidden;position:relative;transition:var(--tr);}
+.team-card:hover{background:var(--surface2);}
+.team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background .3s;z-index:2;}
+.team-card:hover::before{background:var(--red);}
+.team-photo{height:260px;overflow:hidden;position:relative;}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(.7) brightness(.75);transition:transform .6s,filter .4s;}
+.team-card:hover .team-photo img{transform:scale(1.06);filter:saturate(1) brightness(.9);}
+.team-photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%);}
+.team-info{padding:20px 22px 22px;}
+.team-role{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:4px;}
+.team-name{font-family:'Racing Sans One',cursive;font-size:22px;letter-spacing:1px;margin-bottom:8px;}
+.team-bio{font-size:12px;color:var(--text-dim);line-height:1.65;}
+
+/* VALUES */
+#values{background:var(--bg2);}
+.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border);margin-top:48px;}
+.val-card{background:var(--surface);padding:36px;border-left:3px solid transparent;transition:var(--tr);opacity:0;transform:translateY(20px);}
+.val-card.vis{opacity:1;transform:translateY(0);}
+.val-card:hover{border-left-color:var(--red);background:var(--surface2);}
+.val-icon{font-size:36px;margin-bottom:16px;display:block;}
+.val-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+.val-text{font-size:13px;color:var(--text-dim);line-height:1.7;}
+
+/* CTA BANNER */
+.cta-banner{background:var(--red);padding:80px 64px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.cta-banner h2{font-family:'Racing Sans One',cursive;font-size:clamp(28px,4vw,48px);color:#fff;line-height:1;}
+.cta-banner p{font-size:14px;color:rgba(255,255,255,.75);margin-top:8px;}
+.btn-white{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:#fff;color:var(--red);border:none;padding:16px 40px;cursor:none;transition:var(--tr);clip-path:var(--clip);white-space:nowrap;}
+.btn-white:hover{background:#000;color:#fff;}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:2px solid var(--border);padding:48px 64px 32px;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:1px;color:var(--text-muted);flex-wrap:wrap;gap:10px;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:12px;transition:color .25s;}
+.footer-links a:hover{color:var(--red);}
+.footer-logo{font-family:'Racing Sans One',cursive;font-size:22px;letter-spacing:4px;}
+.footer-logo em{color:var(--red);font-style:normal;}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(28px);transition:opacity .65s,transform .65s;}
+.rev.vis{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<div id="prog"><div id="prog-fill"></div></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-cross" id="cursorCross"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="../index.html" class="nav-logo">VEL<em>O</em>X</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Ana Sayfa</a></li>
+    <li><a href="about.html" class="active">Hakkımızda</a></li>
+    <li><a href="projects.html">Projeler</a></li>
+    <li><a href="contact.html">İletişim</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="theme-btn" id="themeBtn"><div class="theme-ind" id="themeInd">DARK</div></div>
+    <button class="nav-cta" onclick="location.href='../index.html#booking'">Hemen Kirala</button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-slash"></div>
+  <div style="position:relative;z-index:2;">
+    <div class="page-eyebrow">Biz Kimiz</div>
+    <div class="page-title">
+      <span>VELOX</span>
+      <span class="t-out">HAKKINDA</span>
+    </div>
+  </div>
+</div>
+
+<div class="checker"></div>
+
+<!-- MISSION -->
+<section id="mission" style="background:var(--bg2);">
+  <div class="mission-grid">
+    <div class="mission-text rev">
+      <div class="sec-label">Misyonumuz</div>
+      <h2>Sürüş Bir<br>Ayrıcalıktır</h2>
+      <p>2015 yılında İstanbul'da kurulan VELOX, "araç kiralama" kavramını yeniden tanımlamak amacıyla yola çıktı. Sıradan bir hizmeti, unutulmaz bir deneyime dönüştürme inancıyla büyüdük.</p>
+      <p>Bugün 48 şehirde 250'den fazla premium araçla, Türkiye'nin en güvenilir ve en hızlı araç kiralama platformuyuz. Her rezervasyonda müşterimize sadece bir araç değil; güven, konfor ve özgürlük sunuyoruz.</p>
+    </div>
+    <div class="mission-visual rev">
+      <img class="mission-img" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=700&q=80&fit=crop" alt="VELOX filo">
+      <div class="mission-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<div class="checker alt"></div>
+
+<!-- NUMBERS -->
+<section id="numbers" style="padding:0;">
+  <div class="numbers-grid">
+    <div class="num-box"><div class="num-val" data-count="250">0</div><div class="num-lbl">Premium Araç</div></div>
+    <div class="num-box"><div class="num-val" data-count="48">0</div><div class="num-lbl">Şehir</div></div>
+    <div class="num-box"><div class="num-val" data-count="500000">0</div><div class="num-lbl">Mutlu Müşteri</div></div>
+    <div class="num-box"><div class="num-val" data-count="98">0</div><div class="num-lbl">% Memnuniyet</div></div>
+  </div>
+</section>
+
+<div class="checker"></div>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="sec-label rev" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px;"><span style="width:16px;height:2px;background:var(--red);display:inline-block;"></span>Tarihçemiz</div>
+  <h2 class="timeline-title rev">YOL HARİTAMIZ</h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot big">15</div><div class="tl-content"><div class="tl-year">2015</div><div class="tl-heading">Kuruluş — İstanbul</div><div class="tl-text">5 araç ve büyük bir hayalle Atatürk Havalimanı yakınlarında küçük bir ofiste başladık. İlk günden itibaren "premium hizmet, uygun fiyat" ilkemizden taviz vermedik.</div></div></div>
+    <div class="tl-item"><div class="tl-dot">17</div><div class="tl-content"><div class="tl-year">2017</div><div class="tl-heading">3 Şehre Genişleme</div><div class="tl-text">İstanbul'daki başarımızın ardından Ankara ve İzmir'e açıldık. Filomuz 40 araca ulaştı. İlk kurumsal müşterilerimizi kazandık.</div></div></div>
+    <div class="tl-item"><div class="tl-dot">19</div><div class="tl-content"><div class="tl-year">2019</div><div class="tl-heading">Dijital Dönüşüm</div><div class="tl-text">Anlık rezervasyon platformumuzu hayata geçirdik. 7/24 destek hattını kurduk. İlk mobil uygulamamızı yayınladık ve kullanıcı sayımız 50.000'i geçti.</div></div></div>
+    <div class="tl-item"><div class="tl-dot">21</div><div class="tl-content"><div class="tl-year">2021</div><div class="tl-heading">Elektrikli Filo</div><div class="tl-text">Tesla Model 3 ve Model Y araçlarıyla Türkiye'nin ilk premium elektrikli araç kiralama hizmetini başlattık. Yeşil mobilite vizyonumuzu hayata geçirdik.</div></div></div>
+    <div class="tl-item"><div class="tl-dot big">25</div><div class="tl-content"><div class="tl-year">2025</div><div class="tl-heading">48 Şehir — 250+ Araç</div><div class="tl-text">Bugün Türkiye'nin dört bir yanında hizmet veriyoruz. 500.000'den fazla mutlu müşteri, %98 memnuniyet oranı ve sürekli büyüyen bir filomuzla sektörün zirvesindeyiz.</div></div></div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="background:var(--surface);">
+  <div class="sec-label rev" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px;"><span style="width:16px;height:2px;background:var(--red);display:inline-block;"></span>Ekibimiz</div>
+  <h2 style="font-family:'Racing Sans One',cursive;font-size:clamp(32px,4vw,52px);margin-bottom:0;" class="rev">PİT DUVARI EKİBİ</h2>
+  <div class="team-grid">
+    <div class="team-card rev">
+      <div class="team-photo">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fit=crop" alt="CEO">
+        <div class="team-photo-overlay"></div>
+      </div>
+      <div class="team-info">
+        <div class="team-role">Kurucu & CEO</div>
+        <div class="team-name">Hamza Kahveci</div>
+        <div class="team-bio">10 yıllık otomotiv ve teknoloji deneyimiyle VELOX'u sıfırdan inşa etti. "Her yolculuk bir hikayedir" felsefesiyle hareket eder.</div>
+      </div>
+    </div>
+    <div class="team-card rev">
+      <div class="team-photo">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80&fit=crop" alt="COO">
+        <div class="team-photo-overlay"></div>
+      </div>
+      <div class="team-info">
+        <div class="team-role">Operasyon Direktörü</div>
+        <div class="team-name">Ayşe Demir</div>
+        <div class="team-bio">48 şehirdeki operasyonları ve 120 kişilik saha ekibini yönetiyor. Mükemmeliyetçi yapısıyla VELOX standartlarının mimarı.</div>
+      </div>
+    </div>
+    <div class="team-card rev">
+      <div class="team-photo">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&fit=crop" alt="CTO">
+        <div class="team-photo-overlay"></div>
+      </div>
+      <div class="team-info">
+        <div class="team-role">Teknoloji Direktörü</div>
+        <div class="team-name">Mert Yılmaz</div>
+        <div class="team-bio">Anlık rezervasyon sistemi ve mobil platformun mimarı. Yapay zeka tabanlı filo yönetim sistemini geliştirdi.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values" style="background:var(--bg2);">
+  <div class="sec-label rev" style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:10px;"><span style="width:16px;height:2px;background:var(--red);display:inline-block;"></span>Değerlerimiz</div>
+  <h2 style="font-family:'Racing Sans One',cursive;font-size:clamp(32px,4vw,52px);margin-bottom:0;" class="rev">YARIŞÇI RUHU</h2>
+  <div class="values-grid">
+    <div class="val-card"><span class="val-icon">🏎️</span><div class="val-title">Hız & Verimlilik</div><div class="val-text">Rezervasyondan teslimata her adımda maksimum hız. Bekleme yok, bürokratik engel yok. Süreçleri sıfırdan tasarladık.</div></div>
+    <div class="val-card"><span class="val-icon">🛡️</span><div class="val-title">Güven & Şeffaflık</div><div class="val-text">Fiyatlarda sürpriz yok. Sözleşmede gizli madde yok. Her ücret, her kural müşterimize açık ve net şekilde sunulur.</div></div>
+    <div class="val-card"><span class="val-icon">⭐</span><div class="val-title">Mükemmellik Takıntısı</div><div class="val-text">Filomizdeki her araç teslimattan önce 47 nokta kontrolünden geçer. Standartlarımızın altında hiçbir araç müşterimize ulaşmaz.</div></div>
+    <div class="val-card"><span class="val-icon">🌱</span><div class="val-title">Sürdürülebilir Sürüş</div><div class="val-text">2030'a kadar filomuzun %40'ını elektrikli araçlara dönüştürme hedefimizle çevreye sorumlu bir mobilite anlayışını benimsiyoruz.</div></div>
+  </div>
+</section>
+
+<div class="checker"></div>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div>
+    <h2>Sizi Bekliyoruz</h2>
+    <p>250+ araç, 48 şehir. Yola çıkmak için bir tıklama yeter.</p>
+  </div>
+  <button class="btn-white" onclick="location.href='../index.html#booking'">🏁 Hemen Rezervasyon Yap</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <span class="footer-logo">VEL<em>O</em>X</span>
+    <span>© 2025 VELOX Araç Kiralama A.Ş.</span>
+    <div class="footer-links">
+      <a href="about.html">Hakkımızda</a>
+      <a href="projects.html">Projeler</a>
+      <a href="contact.html">İletişim</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Cursor
+const cur=document.getElementById('cursor'),cross=document.getElementById('cursorCross');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function loop(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cross.style.left=cx+'px';cross.style.top=cy+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.team-card,.val-card,.num-box').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('hov'));
+});
+// Scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('sc',scrollY>50);
+  document.getElementById('prog-fill').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
+});
+// Theme
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  const h=document.documentElement;
+  h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';
+  document.getElementById('themeInd').textContent=h.dataset.theme==='dark'?'DARK':'LIGHT';
+});
+// Counter
+function animCount(el){
+  const t=+el.dataset.count,dur=2000;let s=null;
+  (function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/dur,1);const e=p<.5?2*p*p:-1+(4-2*p)*p;
+  el.textContent=Math.floor(e*t).toLocaleString('tr-TR');if(p<1)requestAnimationFrame(step);else el.textContent=t.toLocaleString('tr-TR');})(performance.now());
+}
+// IO
+const io=new IntersectionObserver(ents=>{
+  ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');if(e.target.dataset.count)animCount(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.rev,.tl-item,.val-card,[data-count]').forEach(el=>io.observe(el));
+document.querySelectorAll('.tl-item').forEach((el,i)=>el.style.transitionDelay=(i*.12)+'s');
+document.querySelectorAll('.val-card').forEach((el,i)=>el.style.transitionDelay=(i*.1)+'s');
+</script>
+</body>
+</html>
