@@ -784,82 +784,111 @@
   <section id="testimonials">
     <div class="sec-eyebrow rev">Müşteri Yorumları</div>
     <h2 class="sec-title rev">NE DİYORLAR?</h2>
-    <div class="t-grid">
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Havalimanı çıkışında araç hemen hazırdı. Kasko dahil olduğu için hiç stres yaşamadım."</p>
-        <div class="t-author">
-          <div class="t-ava">AY</div>
-          <div>
-            <div class="t-name">Ayşe Yıldız</div>
-            <div class="t-city">İstanbul · 14 kiralama</div>
+    <div class="t-slider-wrap">
+      <button class="t-slider-btn prev" onclick="moveSlider(-1)">❮</button>
+      <div class="t-slider-view">
+        <div class="t-slider-track" id="t-track">
+          <div class="t-card">
+            <div class="t-stars">★★★★★</div>
+            <p class="t-text">"Havalimanı çıkışında araç hemen hazırdı. Kasko dahil olduğu için hiç stres yaşamadım."</p>
+            <div class="t-author">
+              <div class="t-ava">AY</div>
+              <div>
+                <div class="t-name">Ayşe Yıldız</div>
+                <div class="t-city">İstanbul · 14 kiralama</div>
+              </div>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-stars">★★★★★</div>
+            <p class="t-text">"BMW 5 Serisi ile iş seyahatim mükemmeldi. Araç tertemiz, her şey çalışıyor. Çok memnunum."</p>
+            <div class="t-author">
+              <div class="t-ava">MK</div>
+              <div>
+                <div class="t-name">Mehmet Kaya</div>
+                <div class="t-city">Ankara · 8 kiralama</div>
+              </div>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-stars">★★★★★</div>
+            <p class="t-text">"Tesla Model 3 kiraladım, elektrikli araç deneyimim bu kadar keyifli olmamıştı. Şarj rehberliği de harika."</p>
+            <div class="t-author">
+              <div class="t-ava">EÖ</div>
+              <div>
+                <div class="t-name">Emre Öztürk</div>
+                <div class="t-city">İzmir · 22 kiralama</div>
+              </div>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-stars">★★★★☆</div>
+            <p class="t-text">"Explorer ile 7 kişilik aile tatilimiz harikaydı. Büyük araç, harika konfor, kesinlikle öneririm."</p>
+            <div class="t-author">
+              <div class="t-ava">SÇ</div>
+              <div>
+                <div class="t-name">Sevgi Çelik</div>
+                <div class="t-city">Antalya · 5 kiralama</div>
+              </div>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-stars">★★★★★</div>
+            <p class="t-text">"Gece 2'de arıza — 15 dakikada yardım aracı geldi. Bu kadar hızlı servis görmedim hayatımda."</p>
+            <div class="t-author">
+              <div class="t-ava">CY</div>
+              <div>
+                <div class="t-name">Can Yılmaz</div>
+                <div class="t-city">Bursa · 11 kiralama</div>
+              </div>
+            </div>
+          </div>
+          <div class="t-card">
+            <div class="t-stars">★★★★★</div>
+            <p class="t-text">"İş seyahatlerimde artık sadece VELOX. Audi A6 ile hem konforlu hem prestijli bir deneyim yaşıyorum."</p>
+            <div class="t-author">
+              <div class="t-ava">BT</div>
+              <div>
+                <div class="t-name">Burak Taş</div>
+                <div class="t-city">İzmir · 31 kiralama</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"BMW 5 Serisi ile iş seyahatim mükemmeldi. Araç tertemiz, her şey çalışıyor. Çok memnunum."
-        </p>
-        <div class="t-author">
-          <div class="t-ava">MK</div>
-          <div>
-            <div class="t-name">Mehmet Kaya</div>
-            <div class="t-city">Ankara · 8 kiralama</div>
-          </div>
-        </div>
+      <button class="t-slider-btn next" onclick="moveSlider(1)">❯</button>
+    </div>
+    <div class="t-slider-dots" id="t-dots"></div>
+  </section>
+
+  <div class="checker-row alt"></div>
+
+  <!-- KOSULLAR (TABS) -->
+  <section id="kosullar">
+    <div class="sec-eyebrow rev">Bilgilendirme</div>
+    <h2 class="sec-title rev">KİRALAMA KOŞULLARI</h2>
+    <div class="tabs-wrap rev">
+      <div class="tabs-head">
+        <button class="tab-btn active" onclick="openTab(event, 'tab-sigorta')">Sigorta ve Kasko</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-iptal')">İptal ve İade</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab-teslimat')">Teslimat Şartları</button>
       </div>
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Tesla Model 3 kiraladım, elektrikli araç deneyimim bu kadar keyifli olmamıştı. Şarj
-          rehberliği de harika."</p>
-        <div class="t-author">
-          <div class="t-ava">EÖ</div>
-          <div>
-            <div class="t-name">Emre Öztürk</div>
-            <div class="t-city">İzmir · 22 kiralama</div>
-          </div>
+      <div class="tabs-body">
+        <div id="tab-sigorta" class="tab-content active">
+          <h4>Tam Kasko Güvencesi</h4>
+          <p>Tüm araçlarımız %100 tam kaskoludur. Çift taraflı kazalarda polis raporu tutulması zorunludur. Mini hasar sigortası ile 5000 TL'ye kadar olan çizik ve ezilmeler raporsuz karşılanır.</p>
         </div>
-      </div>
-      <div class="t-card">
-        <div class="t-stars">★★★★☆</div>
-        <p class="t-text">"Explorer ile 7 kişilik aile tatilimiz harikaydı. Büyük araç, harika konfor, kesinlikle
-          öneririm."</p>
-        <div class="t-author">
-          <div class="t-ava">SÇ</div>
-          <div>
-            <div class="t-name">Sevgi Çelik</div>
-            <div class="t-city">Antalya · 5 kiralama</div>
-          </div>
+        <div id="tab-iptal" class="tab-content">
+          <h4>Ücretsiz İptal Hakkı</h4>
+          <p>Rezervasyonunuzu alış saatinden 24 saat öncesine kadar kesintisiz iptal edebilirsiniz. 24 saatten az kalan iptallerde 1 günlük kira bedeli tahsil edilir.</p>
         </div>
-      </div>
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"Gece 2'de arıza — 15 dakikada yardım aracı geldi. Bu kadar hızlı servis görmedim hayatımda."
-        </p>
-        <div class="t-author">
-          <div class="t-ava">CY</div>
-          <div>
-            <div class="t-name">Can Yılmaz</div>
-            <div class="t-city">Bursa · 11 kiralama</div>
-          </div>
-        </div>
-      </div>
-      <div class="t-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-text">"İş seyahatlerimde artık sadece VELOX. Audi A6 ile hem konforlu hem prestijli bir deneyim
-          yaşıyorum."</p>
-        <div class="t-author">
-          <div class="t-ava">BT</div>
-          <div>
-            <div class="t-name">Burak Taş</div>
-            <div class="t-city">İzmir · 31 kiralama</div>
-          </div>
+        <div id="tab-teslimat" class="tab-content">
+          <h4>Adrese ve Havalimanına Teslim</h4>
+          <p>Seçili lokasyonlarda havalimanı teslimatları ücretsizdir. Adrese teslimat durumlarında mesafeye göre ek ücret (min. 150₺) uygulanabilir. Aracın depozitosu kredi kartından provizyon alınarak işlem görür.</p>
         </div>
       </div>
     </div>
   </section>
-
-  <div class="checker-row alt"></div>
 
   <!-- CITIES -->
   <section id="cities">

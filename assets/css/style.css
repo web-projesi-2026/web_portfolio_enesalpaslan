@@ -1393,6 +1393,88 @@ footer::before {
 .rev { opacity: 0; transform: translateY(28px); transition: opacity .65s, transform .65s; }
 .rev.vis { opacity: 1; transform: translateY(0); }
 
+/* ── TABS (Kiralama Koşulları) ── */
+.tabs-wrap {
+  margin-top: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.tabs-head {
+  display: flex;
+  border-bottom: 2px solid var(--border);
+  background: var(--bg2);
+}
+.tab-btn {
+  flex: 1; padding: 18px;
+  background: transparent; border: none;
+  color: var(--text-muted);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; cursor: none;
+  transition: var(--transition);
+  position: relative;
+}
+.tab-btn::after {
+  content: ''; position: absolute;
+  bottom: -2px; left: 0; right: 0; height: 2px;
+  background: var(--red); transform: scaleX(0);
+  transition: transform .3s;
+}
+.tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+.tab-btn.active { color: var(--red); background: var(--surface); }
+.tab-btn.active::after { transform: scaleX(1); }
+.tabs-body { padding: 40px; }
+.tab-content { display: none; animation: fadeIn .4s ease; }
+.tab-content.active { display: block; }
+.tab-content h4 {
+  font-family: 'Racing Sans One', cursive;
+  font-size: 24px; color: var(--text); margin-bottom: 16px;
+}
+.tab-content p {
+  color: var(--text-dim); font-size: 15px; line-height: 1.8;
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* ── SLIDER (TESTIMONIALS) ── */
+.t-slider-wrap {
+  position: relative; margin-top: 50px;
+  display: flex; align-items: center; gap: 20px;
+}
+.t-slider-btn {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--surface); border: 1px solid var(--border2);
+  color: var(--text); font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: none; transition: var(--transition); flex-shrink: 0;
+}
+.t-slider-btn:hover:not(:disabled) { background: var(--red); color: #fff; border-color: var(--red); box-shadow: var(--shadow-red); }
+.t-slider-btn:disabled { opacity: 0.3; cursor: default; }
+.t-slider-view {
+  overflow: hidden; flex: 1;
+}
+.t-slider-track {
+  display: flex; gap: 20px;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.t-slider-track .t-card {
+  min-width: 100%; border: 1px solid var(--border);
+}
+@media screen and (min-width: 768px) {
+  .t-slider-track .t-card { min-width: calc(50% - 10px); }
+}
+@media screen and (min-width: 1024px) {
+  .t-slider-track .t-card { min-width: calc(33.333% - 13.33px); }
+}
+.t-slider-dots {
+  display: flex; justify-content: center; gap: 8px; margin-top: 30px;
+}
+.t-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--border2); cursor: none; transition: var(--transition);
+}
+.t-dot:hover { background: rgba(232,0,31,0.5); }
+.t-dot.active { background: var(--red); transform: scale(1.3); }
+
 /* ── RESPONSIVE & HAMBURGER ── */
 .hamburger-btn {
   display: none;
