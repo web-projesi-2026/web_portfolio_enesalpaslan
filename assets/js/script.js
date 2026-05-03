@@ -380,3 +380,105 @@ if(hamburgerBtn && navLinks) {
     });
   });
 }
+
+/* ═══ DYNAMIC DATA & FAVORITES ═══ */
+let allCars = [];
+let favorites = JSON.parse(localStorage.getItem('velox_favorites')) || [];
+
+async function loadCars() {
+  try {
+    const res = await fetch('products.json');
+    if (!res.ok) throw new Error('Veri çekilemedi');
+    allCars = await res.json();
+    renderCars(allCars);
+    updateFavNav();
+  } catch (err) {
+    console.error('Hata:', err);
+    document.getElementById('carsGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--red);">Veriler yüklenemedi. Lütfen Live Server eklentisi ile çalıştırdığınızdan emin olun.</div>';
+  }
+}
+
+function renderCars(cars) {
+  const grid = document.getElementById('carsGrid');
+  let html = '';
+  
+  cars.forEach((car, index) => {
+    const isFav = favorites.includes(car.id);
+    const favIcon = isFav ? '♥' : '♡';
+    const favClass = isFav ? 'active' : '';
+    
+    let badgeHtml = '';
+    if (car.badge) {
+      badgeHtml = `<div class="car-badge ${car.badgeClass || ''}" style="${car.badgeStyle || ''}">${car.badge}</div>`;
+    }
+    
+    let specsHtml = '';
+    if (car.features) {
+      specsHtml = car.features.map(f => `<div class="cspec"><span class="cspec-ico">${f.icon}</span><span class="cspec-val">${f.val}</span></div>`).join('');
+    }
+    
+    html += `
+      <div class="car-card" data-cat="${car.cat}" data-name="${car.name}" data-price="${car.price}" data-make="${car.make}"
+        data-trans="${car.trans}" data-fuel="${car.fuel}" data-seats="${car.seats}" data-power="${car.power}" style="transition-delay: ${index * 0.05}s">
+        ${badgeHtml}
+        
+        <button class="car-fav-btn ${favClass}" title="Favorilere Ekle" onclick="toggleFav('${car.id}', this)">${favIcon}</button>
+        <button class="car-cmp-btn" title="Karşılaştırmaya ekle" onclick="toggleCmp(this)" style="right: 50px;">⊕</button>
+        
+        <div class="car-photo">
+          <img src="${car.image}" alt="${car.name}" loading="lazy">
+          <div class="car-photo-tint"></div>
+          <div class="car-cat-tag">${car.catTag || car.cat}</div>
+        </div>
+        <div class="car-body">
+          <div class="car-make">${car.make}</div>
+          <div class="car-name">${car.name}</div>
+          <div class="car-specs">
+            ${specsHtml}
+          </div>
+          <div class="car-foot">
+            <div>
+              <div class="car-price-num">₺${car.price.toLocaleString('tr-TR')}</div>
+              <div class="car-price-label">/ günlük</div>
+            </div>
+            <button class="car-rent-btn" onclick="openCarModal(this)"><span>Kirala →</span></button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  grid.innerHTML = html;
+  
+  document.querySelectorAll('.car-card').forEach(el=>io.observe(el));
+}
+
+function toggleFav(carId, btn) {
+  const index = favorites.indexOf(carId);
+  if (index > -1) {
+    favorites.splice(index, 1);
+    btn.classList.remove('active');
+    btn.textContent = '♡';
+    toast('Favorilerden çıkarıldı', '✕');
+  } else {
+    favorites.push(carId);
+    btn.classList.add('active');
+    btn.textContent = '♥';
+    toast('Favorilere eklendi', '♥');
+  }
+  localStorage.setItem('velox_favorites', JSON.stringify(favorites));
+  updateFavNav();
+}
+
+function updateFavNav() {
+  const favCount = document.getElementById('favCount');
+  const favBtn = document.getElementById('favNavBtn');
+  if(favCount && favBtn) {
+    favCount.textContent = favorites.length;
+    favBtn.classList.toggle('show', favorites.length > 0);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadCars();
+});
