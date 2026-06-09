@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VELOX — Motorsport Araç Kiralama</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="VELOX - Türkiye'nin #1 premium araç kiralama platformu. 250+ araç, 48 şehir.">
@@ -53,6 +54,7 @@
       <li><a href="#cars">Araçlar</a></li>
       <li><a href="#hakkimizda">Hakkımızda</a></li>
       <li><a href="#iletisim">İletişim</a></li>
+      <li><a href="login.php" style="color:var(--red);">Giriş / Kayıt</a></li>
     </ul>
     <div class="nav-right">
       <button class="cmp-nav-btn" id="favNavBtn" onclick="smoothTo('cars')">
@@ -187,6 +189,9 @@
         <h2 class="sec-title rev">TÜM ARAÇLAR</h2>
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px;">
+        <div class="search-input-wrap">
+          <input type="text" id="carSearchInput" placeholder="Araç adı veya marka ara..." oninput="applyFilters()" style="padding: 10px 16px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-family: 'Barlow Condensed', sans-serif; font-size: 14px; letter-spacing: 1px; outline: none; width: 100%; min-width: 250px;">
+        </div>
         <div class="filter-tabs">
           <button class="ftab on" onclick="filterCars('all',this)">Tümü</button>
           <button class="ftab" onclick="filterCars('ekonomi',this)">Ekonomi</button>
