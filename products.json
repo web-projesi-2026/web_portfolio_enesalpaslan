@@ -1,0 +1,200 @@
+[
+  {
+    "id": "car-1",
+    "cat": "ekonomi",
+    "name": "Toyota Corolla",
+    "make": "Toyota",
+    "price": 850,
+    "trans": "Otomatik",
+    "fuel": "Hibrit",
+    "seats": 5,
+    "power": "122 bg",
+    "image": "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=600&q=80&fit=crop",
+    "badge": "⭐ Popüler",
+    "badgeClass": "",
+    "badgeStyle": "",
+    "features": [
+      {"icon": "⚙️", "val": "Otomatik"},
+      {"icon": "👥", "val": "5 Kişi"},
+      {"icon": "🌿", "val": "Hibrit"},
+      {"icon": "❄️", "val": "Klima"}
+    ],
+    "catTag": "Ekonomi"
+  },
+  {
+    "id": "car-2",
+    "cat": "suv",
+    "name": "Toyota RAV4",
+    "make": "Toyota",
+    "price": 1250,
+    "trans": "Otomatik",
+    "fuel": "Hibrit",
+    "seats": 5,
+    "power": "218 bg",
+    "image": "https://images.unsplash.com/photo-1581540222194-0def2dda95b8?w=600&q=80&fit=crop",
+    "badge": "Yeni Sezon",
+    "badgeClass": "b-new",
+    "badgeStyle": "",
+    "features": [
+      {"icon": "⚙️", "val": "Otomatik"},
+      {"icon": "👥", "val": "5 Kişi"},
+      {"icon": "🚀", "val": "4x4"},
+      {"icon": "🌿", "val": "Hibrit"}
+    ],
+    "catTag": "SUV"
+  },
+  {
+    "id": "car-3",
+    "cat": "luks",
+    "name": "Mercedes E-Class",
+    "make": "Mercedes-Benz",
+    "price": 2900,
+    "trans": "Otomatik",
+    "fuel": "Benzin",
+    "seats": 5,
+    "power": "258 bg",
+    "image": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&q=80&fit=crop",
+    "badge": "",
+    "badgeClass": "",
+    "badgeStyle": "",
+    "features": [
+      {"icon": "⚙️", "val": "Otomatik"},
+      {"icon": "👥", "val": "5 Kişi"},
+      {"icon": "⭐", "val": "Premium"},
+      {"icon": "🔊", "val": "Hi-Fi"}
+    ],
+    "catTag": "Lüks"
+  },
+  {
+    "id": "car-4",
+    "cat": "luks",
+    "name": "BMW 5 Serisi",
+    "make": "BMW",
+    "price": 3500,
+    "trans": "Otomatik",
+    "fuel": "Benzin",
+    "seats": 5,
+    "power": "286 bg",
+    "image": "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80&fit=crop",
+    "badge": "🔥 Çok İstenen",
+    "badgeClass": "",
+    "badgeStyle": "background:#e8001f;",
+    "features": [
+      {"icon": "⚙️", "val": "Otomatik"},
+      {"icon": "👥", "val": "5 Kişi"},
+      {"icon": "⭐", "val": "M Sport"},
+      {"icon": "🏎️", "val": "286 bg"}
+    ],
+    "catTag": "Lüks"
+  },
+  {
+    "id": "car-5",
+    "cat": "suv",
+    "name": "Ford Explorer",
+    "make": "Ford",
+    "price": 1800,
+    "trans": "Otomatik",
+    "fuel": "Benzin",
+    "seats": 7,
+    "power": "300 bg",
+    "image": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=80&fit=crop",
+    "badge": "",
+    "badgeClass": "",
+    "badgeStyle": "",
+    "features": [
+      {"icon": "⚙️", "val": "Otomatik"},
+      {"icon": "👥", "val": "7 Kişi"},
+      {"icon": "🚀", "val": "AWD"},
+      {"icon": "📱", "val": "Android"}
+    ],
+    "catTag": "SUV 7 Kişi"
+  },
+  {
+    "id": "car-6",
+    "cat": "ekonomi",
+    "name": "Volkswagen Polo",
+    "make": "Volkswagen",
+    "price": 650,
+    "trans": "Manuel",
+    "fuel": "Dizel",
+    "seats": 5,
+    "power": "95 bg",
+    "image": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=600&q=80&fit=crop",
+    "badge": "💰 En Uygun",
+    "badgeClass": "b-best",
+    "badgeStyle": "",
+    "features": [
+      {"icon": "⚙️", "val": "Manuel"},
+      {"icon": "👥", "val": "5 Kişi"},
+      {"icon": "⛽", "val": "Dizel"},
+      {"icon": "❄️", "val": "Klima"}
+    ],
+    "catTag": "Ekonomi"
+  },
+  {
+    "id": "car-7",
+    "cat": "elektrik",
+    "name": "Tesla Model 3",
+    "make": "Tesla",
+    "price": 2200,
+    "trans": "Otomatik",
+    "fuel": "Elektrik",
+    "seats": 5,
+    "power": "358 bg",
+    "image": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&q=80&fit=crop",
+    "badge": "⚡ Elektrik",
+    "badgeClass": "b-ev",
+    "badgeStyle": "",
+    "features": [
+      {"icon": "⚡", "val": "Elektrik"},
+      {"icon": "👥", "val": "5 Kişi"},
+      {"icon": "🔋", "val": "500 km"},
+      {"icon": "📱", "val": "Autopilot"}
+    ],
+    "catTag": "Elektrik"
+  },
+  {
+    "id": "car-8",
+    "cat": "suv",
+    "name": "Jeep Wrangler",
+    "make": "Jeep",
+    "price": 2100,
+    "trans": "Otomatik",
+    "fuel": "Benzin",
+    "seats": 5,
+    "power": "272 bg",
+    "image": "https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&q=80&fit=crop",
+    "badge": "",
+    "badgeClass": "",
+    "badgeStyle": "",
+    "features": [
+      {"icon": "⚙️", "val": "Otomatik"},
+      {"icon": "👥", "val": "5 Kişi"},
+      {"icon": "🏔️", "val": "Off-Road"},
+      {"icon": "🚀", "val": "4WD"}
+    ],
+    "catTag": "4x4 Off-Road"
+  },
+  {
+    "id": "car-9",
+    "cat": "luks",
+    "name": "Audi A6",
+    "make": "Audi",
+    "price": 3200,
+    "trans": "Otomatik",
+    "fuel": "Dizel",
+    "seats": 5,
+    "power": "245 bg",
+    "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80&fit=crop",
+    "badge": "",
+    "badgeClass": "",
+    "badgeStyle": "",
+    "features": [
+      {"icon": "⚙️", "val": "Otomatik"},
+      {"icon": "👥", "val": "5 Kişi"},
+      {"icon": "⭐", "val": "Quattro"},
+      {"icon": "🎵", "val": "B&O"}
+    ],
+    "catTag": "Lüks"
+  }
+]
